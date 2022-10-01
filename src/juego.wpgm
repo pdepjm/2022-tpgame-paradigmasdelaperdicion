@@ -3,7 +3,7 @@ import heroes.*
 
 program juego {
 	game.title("Perdidigma")
-	game.addVisual(knight)
+	game.addVisual(caballero)
 	game.addVisual(leproso)
 	game.addVisual(doctor)
 
@@ -13,3 +13,4 @@ program juego {
 	game.height(50)
 	game.start()
 }
+
