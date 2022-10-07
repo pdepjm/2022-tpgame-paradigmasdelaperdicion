@@ -12,17 +12,15 @@ import niveles.*
 
 	
 	
- 
+	
 } */
 
 object lider {
 	var property position = 
 	
-
 	method moverPara(direccion) {
 		self.position(direccion.proximaPosicion(self.position(), self)) 
 	}
-
 }
 
 class seguidores {
@@ -43,40 +41,3 @@ class seguidores {
 class Visual {
 	var property image	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
