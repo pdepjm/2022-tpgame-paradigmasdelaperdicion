@@ -4,9 +4,9 @@ import movimiento.*
 
 object teclado{
 
-	method configurarTeclas(){
-		keyboard.left().onPressDo({ self.mover(izquierda, lider) })   // deberiamos despues una vez que funcione con el lider agregar a los personajes que lo siguen
-		keyboard.right().onPressDo({ self.mover(derecha, lider) })
+	method configurarTeclas(personaje){
+		keyboard.left().onPressDo({ self.mover(izquierda, personaje) })   // deberiamos despues una vez que funcione con el lider agregar a los personajes que lo siguen
+		keyboard.right().onPressDo({ self.mover(derecha, personaje) })
 		keyboard.e().onPressDo({ game.stop() })	
 		//aca hay q poner para salir del juego
 	}
@@ -19,9 +19,9 @@ object teclado{
 }
 
 object izquierda { 
-	method siguientePosicion(position) = position.left(1) 
+	method siguientePosicion(position) = position.left(2) 
 }
 
 object derecha { 
-	method siguientePosicion(position) = position.right(1) 
+	method siguientePosicion(position) = position.right(2) 
 }

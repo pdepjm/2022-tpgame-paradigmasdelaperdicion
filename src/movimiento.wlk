@@ -6,5 +6,6 @@ object lider {
     
    method image() = "caballero.png"
 
+   
     
 }
