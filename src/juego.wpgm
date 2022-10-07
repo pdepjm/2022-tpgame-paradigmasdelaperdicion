@@ -3,7 +3,7 @@ import movimiento.*
 import teclado.*
 
 program juego {
-	teclado.configurarTeclas(lider)
+	teclado.configurarTeclas()
 	game.title("Perdidigma")
 	game.addVisual(lider)
 	game.addVisual(seguidor1)

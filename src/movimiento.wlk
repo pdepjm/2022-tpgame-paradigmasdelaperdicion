@@ -2,13 +2,13 @@ import wollok.game.*
 import teclado.*
 
 object lider {
-    var property position = game.at(20, 30)
+    var property position = game.at(20, 5)
     var seguidores = [seguidor1 , seguidor2]
     
     method image() = "caballero.png"
 
     method mover(direccion) {
-		posicion = direccion.siguientePosicion(personaje.position())
+		position = direccion.siguientePosicion(lider.position())
         seguidores.forEach({ seguidor => seguidor.fijateDondeEstaElLider() })        
 	}
 }
@@ -26,6 +26,6 @@ class Seguidor {
     
 }
 
-const seguidor1 = new Seguidor(desfasaje = 2, imagen = "doctor.png")
-const seguidor2 = new Seguidor(desfasaje = 4, imagen = "leproso.png")
+const seguidor1 = new Seguidor(desfasaje = 6, imagen = "doctor.png")
+const seguidor2 = new Seguidor(desfasaje = 12, imagen = "leproso.png")
 
