@@ -1,22 +1,10 @@
 import wollok.game.*
-import direcciones.*
-import niveles.*
+import teclado.*
 
 object lider {
     var property position = game.at(20, 30)
     
-    
-
-
-
-
+   method image() = "caballero.png"
 
     
 }
-
-
-
-
-
-
-

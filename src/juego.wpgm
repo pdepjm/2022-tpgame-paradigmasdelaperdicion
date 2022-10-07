@@ -1,11 +1,11 @@
 import wollok.game.*
-import heroes.*
+import movimiento.*
 
 program juego {
 	game.title("Perdidigma")
-	game.addVisual(caballero)
-	game.addVisual(leproso)
-	game.addVisual(doctor)
+	game.addVisual(lider)
+	//game.addVisual(leproso)
+	//game.addVisual(doctor)
 
 	game.boardGround("fondito.png")
 	game.cellSize(100)
@@ -13,6 +13,5 @@ program juego {
 	game.height(50)
 	game.start()
 
-	//aca irian los iconos de los chabones
 }
 

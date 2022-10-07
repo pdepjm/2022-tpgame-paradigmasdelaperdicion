@@ -1,19 +1,7 @@
-import wollok.game.*
+/*import wollok.game.*
 import direcciones.*
 import niveles.*
 
-
-/*class Heroe inherits Visual(image = "pepita.png") { {
-	var 
-	
-	method position() = game.center()
-
-	method image() = "caballero.png"
-
-	
-	
-	
-} */
 
 object lider {
 	var property position = 
@@ -41,3 +29,4 @@ class seguidores {
 class Visual {
 	var property image	
 }
+*/

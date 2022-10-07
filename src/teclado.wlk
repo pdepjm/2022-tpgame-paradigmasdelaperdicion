@@ -1,6 +1,5 @@
-import heroes.*
+import wollok.game.*
 import enemigos.*
-import direcciones.*
 import movimiento.*
 
 object teclado{
