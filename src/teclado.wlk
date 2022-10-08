@@ -1,7 +1,7 @@
 import wollok.game.*
 import enemigos.*
 import movimiento.*
-
+import heroes.*
 
 object teclado{
 

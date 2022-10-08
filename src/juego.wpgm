@@ -2,9 +2,12 @@ import wollok.game.*
 import movimiento.*
 import teclado.*
 import enemigos.*
+import heroes.*
+
 
 program juego {
 	teclado.configurarTeclas()
+	
 	game.title("Perdidigma")
 	game.addVisual(lider)
 	game.addVisual(seguidor1)

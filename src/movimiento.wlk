@@ -5,7 +5,7 @@ import heroes.*
 object lider {
     var property position = game.at(20, 5)
     var seguidores = [seguidor1 , seguidor2]
-    var heroe
+    var heroe = caballero
 
 
     method image() = heroe.image()
