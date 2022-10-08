@@ -1,6 +1,5 @@
 import wollok.game.*
-import direcciones.*
-import niveles.*
+import enemigos.*
 import movimiento.*
 
 class Heroe {
@@ -9,10 +8,10 @@ class Heroe {
 	var estoyVivo = true
 	var property image
 	//var enemigo
-
+ /* 
 	method atacar() {	
 		enemigo.recibirAtaque(habilidadDeAtaque)
-	}
+	}*/
 
 	method seMuere() {
 		estoyVivo = false
@@ -43,5 +42,5 @@ class Habilidades {
 }
 */
 
-var doctor = new Heroe(image = "doctor.png")
-var leproso = new Heroe(image = "leproso.png")
+const doctor = new Heroe(image = "doctor.png")
+const leproso = new Heroe(image = "leproso.png")

@@ -1,5 +1,5 @@
 import wollok.game.*
-import heroe.*
+import heroes.*
 import movimiento.*
 import teclado.*
 
@@ -9,17 +9,17 @@ class Bicho {
 	var vida = 100
 	var enemigos = [lider, seguidor1, seguidor2]
 	var estoyVivo = true
-	var property image
+	var property imagen
 
-
-	method atacar() {	
+	method image() = imagen
+	/*method atacar() {	
 		var habilidadDeAtaque = habilidades.anyOne()	
 		enemigos.filter({ enimgo => enemigo.estoyVivo() }).head().recibirAtaque(habilidadDeAtaque)
-	}
+	}*/
 	
 	method seMuere() {
 		estoyVivo = false
-		image = "muerto.png"
+		imagen = "muerto.png"
 	}
 	
 	method recibirAtaque(ataque) {
@@ -39,4 +39,4 @@ class Bicho {
 
 }
 
-const bichito = new Bicho("ectoplasma.png")
+const bichito = new Bicho(imagen = "ectoplasma.png")

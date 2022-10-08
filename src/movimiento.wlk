@@ -1,5 +1,6 @@
 import wollok.game.*
 import teclado.*
+import heroes.*
 
 object lider {
     var property position = game.at(20, 5)
