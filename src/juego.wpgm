@@ -6,15 +6,15 @@ import heroes.*
 
 
 program juego {
-	teclado.configurarTeclas()
 	
 	game.title("Perdidigma")
 	game.addVisual(lider)
 	game.addVisual(seguidor1)
 	game.addVisual(seguidor2)
 	game.addVisual(bichito)
-
-
+	teclado.configurarTeclas()
+	teclado.configurarColision()
+	
 
 
 	game.boardGround("fondito.png")

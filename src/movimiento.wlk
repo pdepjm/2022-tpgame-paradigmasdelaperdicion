@@ -10,8 +10,8 @@ object lider {
 
     method image() = heroe.image()
 
-    method mover(direccion) {
-		position = direccion.siguientePosicion(lider.position())
+    method mover(direccion,cantidad) {
+		position = direccion.siguientePosicion(self.position(), cantidad)
         seguidores.forEach({ seguidor => seguidor.fijateDondeEstaElLider() })        
 	}
 }

@@ -7,7 +7,7 @@ class Bicho {
 	//var habilidades = []
     const property position = game.at(30, 5)
 	var vida = 100
-	var enemigos = [lider, seguidor1, seguidor2]
+	//var enemigos = [lider, seguidor1, seguidor2]
 	var estoyVivo = true
 	var property imagen
 
@@ -30,7 +30,8 @@ class Bicho {
 	}
     
     method colisionConHeroe() {
-        lider.mover(izquierda)
+        lider.mover(izquierda,6)
+     	
     }
 
 
