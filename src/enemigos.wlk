@@ -19,7 +19,7 @@ class Bicho {
 	
 	method seMuere() {
 		estoyVivo = false
-		imagen = "muerto.png"
+		imagen = "muerto.png"//lider muerto
 	}
 	
 	method recibirAtaque(ataque) {
@@ -31,6 +31,8 @@ class Bicho {
     
     method colisionConHeroe() {
         lider.mover(izquierda,6)
+
+		turno.iniciar()
      	
     }
 

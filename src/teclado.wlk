@@ -6,10 +6,9 @@ import heroes.*
 object teclado{
 
 	method configurarTeclas() {
-		keyboard.left().onPressDo({ lider.mover(izquierda,2)})   // deberiamos despues una vez que funcione con el lider agregar a los personajes que lo siguen
-		keyboard.right().onPressDo({ lider.mover(derecha,2) })
+		keyboard.left().onPressDo({ lider.mover(izquierda, 2)}) 
+		keyboard.right().onPressDo({ lider.mover(derecha, 2) })
 		keyboard.e().onPressDo({ game.stop() })	
-		//aca hay q poner para salir del juego
 	}
 
 	method configurarColision() {

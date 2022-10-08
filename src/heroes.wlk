@@ -24,22 +24,15 @@ class Heroe {
 			self.seMuere()
 		}
 	}
-
-
-	
-
-
 }
 
 /*
 class Habilidades {
 	var property danio
 	
-	
 
-
-	
 }
+
 */
 const caballero = new Heroe(image = "caballero.png")
 const doctor = new Heroe(image = "doctor.png")
