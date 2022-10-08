@@ -41,6 +41,6 @@ class Habilidades {
 	
 }
 */
-
+const caballero = new Heroe(image = "caballero.png")
 const doctor = new Heroe(image = "doctor.png")
 const leproso = new Heroe(image = "leproso.png")
