@@ -8,6 +8,10 @@ program juego {
 	game.addVisual(lider)
 	game.addVisual(seguidor1)
 	game.addVisual(seguidor2)
+	game.addVisual(bichito)
+
+
+
 
 	game.boardGround("fondito.png")
 	game.cellSize(100)

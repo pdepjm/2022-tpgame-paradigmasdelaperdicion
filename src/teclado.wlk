@@ -2,6 +2,7 @@ import wollok.game.*
 import enemigos.*
 import movimiento.*
 
+
 object teclado{
 
 	method configurarTeclas() {
@@ -10,6 +11,12 @@ object teclado{
 		keyboard.e().onPressDo({ game.stop() })	
 		//aca hay q poner para salir del juego
 	}
+
+	method configurarColision() {
+		game.onCollideDo(lider,{ enemigo => enemigo.colisionConHeroe() })
+
+	}
+
 }
 
 object izquierda { 
@@ -19,3 +26,4 @@ object izquierda {
 object derecha { 
 	method siguientePosicion(position) = position.right(2) 
 }
+

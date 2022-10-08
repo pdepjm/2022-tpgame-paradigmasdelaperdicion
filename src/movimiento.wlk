@@ -4,8 +4,10 @@ import teclado.*
 object lider {
     var property position = game.at(20, 5)
     var seguidores = [seguidor1 , seguidor2]
-    
-    method image() = "caballero.png"
+    var heroe
+
+
+    method image() = heroe.image()
 
     method mover(direccion) {
 		position = direccion.siguientePosicion(lider.position())
@@ -16,9 +18,9 @@ object lider {
 class Seguidor {
     var desfasaje
     var property position = lider.position().left(desfasaje)
-    const imagen
+    var heroe
 
-    method image() = imagen
+    method image() = heroe.image()
 
     method fijateDondeEstaElLider() {
         position = lider.position().left(desfasaje)
@@ -26,6 +28,6 @@ class Seguidor {
     
 }
 
-const seguidor1 = new Seguidor(desfasaje = 6, imagen = "doctor.png")
-const seguidor2 = new Seguidor(desfasaje = 12, imagen = "leproso.png")
+const seguidor1 = new Seguidor(desfasaje = 6, heroe = doctor)
+const seguidor2 = new Seguidor(desfasaje = 12, heroe = leproso)
 
