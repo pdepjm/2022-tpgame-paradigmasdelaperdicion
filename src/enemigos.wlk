@@ -4,18 +4,19 @@ import movimiento.*
 import teclado.*
 
 class Bicho {
-	//var habilidades = []
+	var habilidades = [glotoneria]
     const property position = game.at(30, 5)
 	var property vida = 100
-	//var enemigos = [lider, seguidor1, seguidor2]
+	var enemigos = [lider, seguidor1, seguidor2]
 	var estoyVivo = true
 	var property imagen
 
 	method image() = imagen
-	/*method atacar() {	
+
+	method atacar() {	
 		var habilidadDeAtaque = habilidades.anyOne()	
-		enemigos.filter({ enimgo => enemigo.estoyVivo() }).head().recibirAtaque(habilidadDeAtaque)
-	}*/
+		enemigos.filter({ enemigo => enemigo.estoyVivo() }).head().recibirAtaque(habilidadDeAtaque)
+	}
 	
 	method seMuere() {
 		estoyVivo = false

@@ -5,7 +5,7 @@ import heroes.*
 object lider {
     var property position = game.at(20, 5)
     var seguidores = [seguidor1 , seguidor2]
-    var heroe = caballero
+    var property heroe = caballero
 
 
     method image() = heroe.image()
@@ -19,7 +19,7 @@ object lider {
 class Seguidor {
     var desfasaje
     var property position = lider.position().left(desfasaje)
-    var heroe
+    var property heroe
 
     method image() = heroe.image()
 

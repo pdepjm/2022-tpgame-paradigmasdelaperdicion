@@ -5,17 +5,14 @@ import heroes.*
 
 object teclado{
 	var property movimiento = true
+	var property combate = false
 
 	method configurarTeclas() {
-		if (movimiento) {
-			keyboard.left().onPressDo({ lider.mover(izquierda, 2)}) 
-			keyboard.right().onPressDo({ lider.mover(derecha, 2) })
-		}
-		else{
-			keyboard.left().onPressDo({ /* VACIO */ }) 
-			keyboard.right().onPressDo({ /* VACIO */ })
-			keyboard.g().onPressDo({turno => turno.ataqueBasico()})
-		}
+		keyboard.left().onPressDo({ if(movimiento) {lider.mover(izquierda, 2)} }) 
+		keyboard.right().onPressDo({if(movimiento) {lider.mover(derecha, 2)} })
+			
+		keyboard.g().onPressDo({if(combate) { turno.ataqueBasico() } })
+		
 		keyboard.e().onPressDo({ game.stop() })	
 	}
 

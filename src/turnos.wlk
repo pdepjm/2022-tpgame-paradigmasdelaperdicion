@@ -14,33 +14,33 @@ object turno {
     method iniciar() {
         turno.heroes([lider, seguidor1, seguidor2])
         teclado.movimiento(false)
-        teclado.configurarTeclas()
+        teclado.combate(true)
     }
 
     method tocoletraG() {
         if (heroes.isEmpty()) {
             self.atacaElBicho()
         }
-        heroes.head().atacar(cascotaso)
+        heroes.head().heroe().atacar(cascotaso)
         heroes.remove(heroes.head())
     }
     method tocoletraH() {
         if (heroes.isEmpty()) {
             self.atacaElBicho()
         }
-        heroes.head().atacar(cascotaso)
+        heroes.head().atacar()
         heroes.remove(heroes.head())
     }
     method tocoletraJ() {
         if (heroes.isEmpty()) {
             self.atacaElBicho()
         }
-        heroes.head().atacar(cascotaso)
+        heroes.head().atacar()
         heroes.remove(heroes.head())
     }
     method atacaElBicho() {
-        //teclado.reinciarTeclas()
-        //bichito.atacar()        
+        teclado.reinciarTeclas()
+        bichito.atacar()        
         self.iniciar()
     }
 

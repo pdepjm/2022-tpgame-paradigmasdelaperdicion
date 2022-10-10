@@ -9,8 +9,8 @@ class Heroe {
 	var property image
 	var enemigo = bichito
  
-	method atacar() {	
-		enemigo.recibirAtaque(cascotaso)
+	method atacar(habilidad) {	
+		enemigo.recibirAtaque(habilidad)
 	}
 
 	method seMuere() {
@@ -31,6 +31,7 @@ class Habilidad {
 }
 
 const cascotaso = new Habilidad(danio = 20)
+const glotoneria = new Habilidad(danio = 110)
 
 const caballero = new Heroe(image = "caballero.png")
 const doctor = new Heroe(image = "doctor.png")
