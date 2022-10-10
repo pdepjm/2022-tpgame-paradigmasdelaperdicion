@@ -2,6 +2,7 @@ import wollok.game.*
 import heroes.*
 import movimiento.*
 import teclado.*
+import turnos.*
 
 class Bicho {
 	var habilidades = [glotoneria]
