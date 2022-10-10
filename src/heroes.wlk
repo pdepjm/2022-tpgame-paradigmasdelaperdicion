@@ -9,8 +9,8 @@ class Heroe {
 	var property image
 	var enemigo = bichito
  
-	method atacar() {	
-		enemigo.recibirAtaque(cascotaso)
+	method atacar(habilidad) {	
+		enemigo.recibirAtaque(habilidad)
 	}
 
 	method seMuere() {

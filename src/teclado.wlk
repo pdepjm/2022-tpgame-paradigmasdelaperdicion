@@ -2,6 +2,7 @@ import wollok.game.*
 import enemigos.*
 import movimiento.*
 import heroes.*
+import turnos.*
 
 object teclado{
 	var property movimiento = true
@@ -12,12 +13,14 @@ object teclado{
 			keyboard.right().onPressDo({ lider.mover(derecha, 2) })
 		}
 		else{
-			keyboard.left().onPressDo({ /* VACIO */ }) 
-			keyboard.right().onPressDo({ /* VACIO */ })
-			keyboard.g().onPressDo({turno => turno.ataqueBasico()})
+			keyboard.left().onPressDo({ self.vacio() }) 
+			keyboard.right().onPressDo({ self.vacio() })
+			keyboard.g().onPressDo({turno.tocoletraG()})
 		}
 		keyboard.e().onPressDo({ game.stop() })	
 	}
+	
+	method vacio() {}
 
 	method configurarColision() {
 		game.onCollideDo(lider, { algo => algo.colisionConHeroe()  })

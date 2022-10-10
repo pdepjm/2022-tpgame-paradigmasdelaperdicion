@@ -21,21 +21,21 @@ object turno {
         if (heroes.isEmpty()) {
             self.atacaElBicho()
         }
-        heroes.head().atacar(cascotaso)
+        heroes.head().heroe().atacar(cascotaso)
         heroes.remove(heroes.head())
     }
     method tocoletraH() {
         if (heroes.isEmpty()) {
             self.atacaElBicho()
         }
-        heroes.head().atacar(cascotaso)
+        heroes.head().atacar()
         heroes.remove(heroes.head())
     }
     method tocoletraJ() {
         if (heroes.isEmpty()) {
             self.atacaElBicho()
         }
-        heroes.head().atacar(cascotaso)
+        heroes.head().atacar()
         heroes.remove(heroes.head())
     }
     method atacaElBicho() {
