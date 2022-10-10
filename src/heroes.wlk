@@ -5,7 +5,7 @@ import movimiento.*
 class Heroe {
 	//var habilidades = []
 	var vida = 100
-	var estoyVivo = true
+	var property estoyVivo = true
 	var property image
 	var enemigo = bichito
  
@@ -15,7 +15,7 @@ class Heroe {
 
 	method seMuere() {
 		estoyVivo = false
-		game.say(self, "la quede")
+		game.say(lider, "LA QUEDE")
 	}
 	
 	method recibirAtaque(ataque) {

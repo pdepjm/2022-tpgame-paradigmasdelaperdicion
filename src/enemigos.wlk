@@ -7,7 +7,7 @@ import turnos.*
 class Bicho {
 	var habilidades = [glotoneria]
     const property position = game.at(30, 5)
-	var property vida = 100
+	var property vida = 1000
 	var enemigos = [lider, seguidor1, seguidor2]
 	var estoyVivo = true
 	var property imagen
@@ -16,7 +16,7 @@ class Bicho {
 
 	method atacar() {	
 		var habilidadDeAtaque = habilidades.anyOne()	
-		enemigos.filter({ enemigo => enemigo.estoyVivo() }).head().recibirAtaque(habilidadDeAtaque)
+		enemigos.filter({ enemigo => enemigo.heroe().estoyVivo() }).head().heroe().recibirAtaque(habilidadDeAtaque)
 	}
 	
 	method seMuere() {
@@ -34,13 +34,8 @@ class Bicho {
     
     method colisionConHeroe() {
         lider.mover(izquierda,6)
-		turno.iniciar()
-     	
+		turno.iniciar()	
     }
-
-
-	
-
 
 }
 

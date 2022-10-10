@@ -14,8 +14,6 @@ program juego {
 	game.addVisual(bichito)
 	teclado.configurarTeclas()
 	teclado.configurarColision()
-	
-
 
 	game.boardGround("fondito.png")
 	game.cellSize(100)
@@ -23,4 +21,3 @@ program juego {
 	game.height(50)
 	game.start()
 }
-

@@ -39,7 +39,7 @@ object turno {
         heroes.remove(heroes.head())
     }
     method atacaElBicho() {
-        teclado.reinciarTeclas()
+        teclado.combate(false)
         bichito.atacar()        
         self.iniciar()
     }

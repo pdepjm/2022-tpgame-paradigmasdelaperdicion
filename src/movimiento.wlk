@@ -31,4 +31,3 @@ class Seguidor {
 
 const seguidor1 = new Seguidor(desfasaje = 6, heroe = doctor)
 const seguidor2 = new Seguidor(desfasaje = 12, heroe = leproso)
-
