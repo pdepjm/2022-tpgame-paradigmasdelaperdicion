@@ -5,8 +5,44 @@ import teclado.*
 import enemigos.*
 
 object turno {
+    var heroes = []
 
-    method iniciar() {
-        
+    method heroes(_heroes) {
+        heroes.addAll(_heroes)
     }
+    
+    method iniciar() {
+        turno.heroes([lider, seguidor1, seguidor2])
+        teclado.movimiento(false)
+        teclado.configurarTeclas()
+    }
+
+    method tocoletraG() {
+        if (heroes.isEmpty()) {
+            self.atacaElBicho()
+        }
+        heroes.head().atacar(cascotaso)
+        heroes.remove(heroes.head())
+    }
+    method tocoletraH() {
+        if (heroes.isEmpty()) {
+            self.atacaElBicho()
+        }
+        heroes.head().atacar(cascotaso)
+        heroes.remove(heroes.head())
+    }
+    method tocoletraJ() {
+        if (heroes.isEmpty()) {
+            self.atacaElBicho()
+        }
+        heroes.head().atacar(cascotaso)
+        heroes.remove(heroes.head())
+    }
+    method atacaElBicho() {
+        //teclado.reinciarTeclas()
+        //bichito.atacar()        
+        self.iniciar()
+    }
+
+
 }

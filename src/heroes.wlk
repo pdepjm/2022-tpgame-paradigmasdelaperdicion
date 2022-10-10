@@ -7,15 +7,15 @@ class Heroe {
 	var vida = 100
 	var estoyVivo = true
 	var property image
-	//var enemigo
- /* 
+	var enemigo = bichito
+ 
 	method atacar() {	
-		enemigo.recibirAtaque(habilidadDeAtaque)
-	}*/
+		enemigo.recibirAtaque(cascotaso)
+	}
 
 	method seMuere() {
 		estoyVivo = false
-		image = "muerto.png"
+		game.say(self, "la quede")
 	}
 	
 	method recibirAtaque(ataque) {
@@ -26,14 +26,12 @@ class Heroe {
 	}
 }
 
-/*
-class Habilidades {
+class Habilidad {
 	var property danio
-	
-
 }
 
-*/
+const cascotaso = new Habilidad(danio = 20)
+
 const caballero = new Heroe(image = "caballero.png")
 const doctor = new Heroe(image = "doctor.png")
 const leproso = new Heroe(image = "leproso.png")

@@ -6,7 +6,7 @@ import teclado.*
 class Bicho {
 	//var habilidades = []
     const property position = game.at(30, 5)
-	var vida = 100
+	var property vida = 100
 	//var enemigos = [lider, seguidor1, seguidor2]
 	var estoyVivo = true
 	var property imagen
@@ -19,7 +19,8 @@ class Bicho {
 	
 	method seMuere() {
 		estoyVivo = false
-		imagen = "muerto.png"//lider muerto
+		//imagen = "muerto.png"//lider muerto
+		game.say(self, "ME MORI")
 	}
 	
 	method recibirAtaque(ataque) {
@@ -31,7 +32,6 @@ class Bicho {
     
     method colisionConHeroe() {
         lider.mover(izquierda,6)
-
 		turno.iniciar()
      	
     }

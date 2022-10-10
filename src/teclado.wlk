@@ -4,15 +4,23 @@ import movimiento.*
 import heroes.*
 
 object teclado{
+	var property movimiento = true
 
 	method configurarTeclas() {
-		keyboard.left().onPressDo({ lider.mover(izquierda, 2)}) 
-		keyboard.right().onPressDo({ lider.mover(derecha, 2) })
+		if (movimiento) {
+			keyboard.left().onPressDo({ lider.mover(izquierda, 2)}) 
+			keyboard.right().onPressDo({ lider.mover(derecha, 2) })
+		}
+		else{
+			keyboard.left().onPressDo({ /* VACIO */ }) 
+			keyboard.right().onPressDo({ /* VACIO */ })
+			keyboard.g().onPressDo({turno => turno.ataqueBasico()})
+		}
 		keyboard.e().onPressDo({ game.stop() })	
 	}
 
 	method configurarColision() {
-		game.onCollideDo(lider, { algo => algo.colisionConHeroe() })
+		game.onCollideDo(lider, { algo => algo.colisionConHeroe()  })
 		
 	}
 
