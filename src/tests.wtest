@@ -1,6 +1,22 @@
+import wollok.game.*
+import teclado.*
+import heroes.*
+import movimiento.*
+import enemigos.*
+import turnos.*
 
-test "testX" {
+//TESTS DE MOVIMIENTO Y POSICION
+test "si el lider esta en la posicion (20, 5) y se mueve una vez para la derecha, el lider queda en la posicion (21, 5)" {
+	lider.mover(derecha, 1)
+	assert.equals(game.at(21, 5), lider.position())
+}
 
-	assert.that(true)
+test "si el lider esta en la posicion (20, 5) y se mueve una vez para la izquierda, el lider queda en la posicion (19, 5)" {
+	lider.mover(izquierda, 1)
+	assert.equals(game.at(19, 5), lider.position())
+}
 
+test "si el seguidor 1 esta en la posicion (14, 5) y se mueve una vez para la derecha, el lider queda en la posicion (15, 5)" {
+	lider.mover(derecha, 1)
+	assert.equals(game.at(15, 5), seguidor1.position())
 }

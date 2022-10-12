@@ -18,7 +18,7 @@ object lider {
 
 class Seguidor {
     var desfasaje
-    var property position = lider.position().left(desfasaje)
+    var property position = lider.position().left(desfasaje) //esto habria que delegarlo ya sabemos
     var property heroe
 
     method image() = heroe.image()
