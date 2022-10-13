@@ -6,6 +6,7 @@ import enemigos.*
 
 object turno {
     var heroes = []
+    var property enemigo = bichito
 
     method heroes(_heroes) {
         heroes.addAll(_heroes)
@@ -25,10 +26,13 @@ object turno {
     }
 
     method atacaElBicho() {
-        teclado.estado(enMovimiento)
-        bichito.atacar()        
+        enemigo.atacar()        
         self.iniciar()
     }
-
+    
+	method finDelCombate(){
+		teclado.estado(enMovimiento)
+		heroes.clear()
+	}
 
 }

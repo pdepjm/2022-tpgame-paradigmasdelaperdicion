@@ -30,5 +30,12 @@ class Seguidor inherits Jugador {
 	method position() = lider.position().left(desfasaje)    
 }
 
-const seguidor1 = new Seguidor(desfasaje = 6, profesion = doctor)
-const seguidor2 = new Seguidor(desfasaje = 12, profesion = leproso)
+class BarraDeVida {
+	const personaje
+	method image() = "BarraVida" + self.numeroQueCorresponde() + ".png"
+	method position() = personaje.position().up(1) 
+	
+}
+
+const seguidor1 = new Seguidor(desfasaje = 4, profesion = doctor)
+const seguidor2 = new Seguidor(desfasaje = 9, profesion = leproso)

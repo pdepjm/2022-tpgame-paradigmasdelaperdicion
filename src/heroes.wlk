@@ -1,12 +1,12 @@
 import wollok.game.*
 import enemigos.*
 import movimiento.*
+import turnos.*
 
 class Profesion {
 	var vida = 100
-	var property estoyVivo = true
 	var property image
-	var enemigo = bichito
+	var enemigo = turno.enemigo()
 	var fuerza 
 	var defensa 
 	var curacion // numero de dos digitos
@@ -16,9 +16,10 @@ class Profesion {
 	}
 
 	method seMuere() {
-		estoyVivo = false
 		game.say(lider, "LA QUEDE")
 	}
+	
+	method estoyVivo() = vida > 0
 	
 	method recibirAtaque(ataque) {
 		vida -= ataque.danio() / defensa
@@ -44,5 +45,5 @@ class Habilidad {
 
 
 
-const cascotaso = new Habilidad(danio = 20)
+const cascotaso = new Habilidad(danio = 1000)
 const glotoneria = new Habilidad(danio = 110)

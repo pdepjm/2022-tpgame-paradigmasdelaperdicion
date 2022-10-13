@@ -9,7 +9,7 @@ class Bicho {
     const property position = game.at(30, 5)
 	var property vida = 1000
 	var enemigos = [lider, seguidor1, seguidor2]
-	var estoyVivo = true
+	var property estoyVivo = true
 	var property imagen
 
 	method image() = imagen
@@ -30,11 +30,15 @@ class Bicho {
 		vida -= ataque.danio()  * fuerzaDelHeroe
 		if (vida <= 0) {
 			self.seMuere()
+			turno.finDelCombate()
+			game.removeVisual(self)
+			
 		}
 	}
     
     method colisionConHeroe() {
         lider.mover(izquierda,6)
+        turno.enemigo(self)
 		turno.iniciar()	
     }
 
