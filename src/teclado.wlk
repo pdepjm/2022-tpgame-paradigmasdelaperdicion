@@ -5,18 +5,18 @@ import heroes.*
 import turnos.*
 
 object teclado{
-	var property movimiento = true
-	var property combate = false
+	var property estado = enMovimiento
 
 	method configurarTeclas() {
-		keyboard.left().onPressDo({ if(movimiento) {lider.mover(izquierda, 2)} }) 
-		keyboard.right().onPressDo({if(movimiento) {lider.mover(derecha, 2)} })
-		keyboard.g().onPressDo({if(combate) { turno.tocoletraG() } })
+		keyboard.left().onPressDo({ estado.liderMovete(izquierda)} ) //momentoMovimiento.liderMovete()
+		keyboard.right().onPressDo({estado.liderMovete(derecha)})
+		keyboard.g().onPressDo({estado.modoCombate(cascotaso)})
+		keyboard.h().onPressDo({estado.modoCombate(cascotaso)})
+		keyboard.j().onPressDo({estado.modoCombate(cascotaso)})
+		
 		keyboard.e().onPressDo({ game.stop() })	
 	}
 	
-	method vacio() {}
-
 	method configurarColision() {
 		game.onCollideDo(lider, { algo => algo.colisionConHeroe()  })
 	}
@@ -31,3 +31,21 @@ object derecha {
 	method siguientePosicion(position,cantidad) = position.right(cantidad) 
 }
 
+object enMovimiento {
+	method liderMovete(direccion) {
+		lider.mover(direccion, 2)
+	}
+	
+	method modoCombate(habilidad) {}
+	
+}
+
+object enCombate{
+	method liderMovete(direccion) {}
+	
+	method modoCombate(habilidad){
+		turno.tocoletra(habilidad)
+	}
+	
+	
+}

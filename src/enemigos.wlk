@@ -16,7 +16,8 @@ class Bicho {
 
 	method atacar() {	
 		var habilidadDeAtaque = habilidades.anyOne()	
-		enemigos.filter({ enemigo => enemigo.heroe().estoyVivo() }).head().heroe().recibirAtaque(habilidadDeAtaque)
+		enemigos.filter({ enemigo => enemigo.estoyVivo() }).head().recibirAtaque(habilidadDeAtaque)
+		
 	}
 	
 	method seMuere() {
@@ -25,8 +26,8 @@ class Bicho {
 		game.say(self, "ME MORI")
 	}
 	
-	method recibirAtaque(ataque) {
-		vida -= ataque.danio() 
+	method recibirAtaque(ataque, fuerzaDelHeroe) {
+		vida -= ataque.danio()  * fuerzaDelHeroe
 		if (vida <= 0) {
 			self.seMuere()
 		}
