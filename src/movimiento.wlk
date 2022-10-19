@@ -6,6 +6,8 @@ class Jugador {
     var property profesion 
 	
 	method vida()= profesion.vida()
+	
+	method vida(_vida)= profesion.vida(_vida)
 
 	method image() = profesion.image()
 	
@@ -38,21 +40,17 @@ class BarraDeVida {
 	const personaje
 
 	method image() {
-		const StringVida = self.numeroQueCorresponde()
-		if (StringVida == "0") {
-			self.seMurio()
-		}
-		else {
-			return "BarraVida" + StringVida + ".png"
-		}		
-	} 
+        const stringVida = self.numeroQueCorresponde()
+        if (stringVida == "0") {
+            game.schedule(3000, game.removeVisual(self))
+            return "BarraVida" + "Muerto" + ".png"
+        }
+        else {
+            return "BarraVida" + stringVida + ".png"
+        }
+    }
 	
 	method position() = personaje.position().up(1) 
-
-	method seMurio() {
-		self.image("BarraVida" + "Muerto" + ".png")
-		game.schedule(3000, game.removeVisual(self))
-	}
 
 	method numeroQueCorresponde() = (personaje.vida() / 10).roundUp().toString()
 }

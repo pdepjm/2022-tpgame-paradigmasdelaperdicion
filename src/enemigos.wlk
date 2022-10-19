@@ -11,20 +11,19 @@ class Bicho {
 	var enemigos = [lider, seguidor1, seguidor2]
 	var property estoyVivo = true
 	var property nombre
-
-	method image() = nombre + ".png"
+	var property image = nombre + ".png"
 
 	method atacar() {	
 		var habilidadDeAtaque = habilidades.anyOne()	
 		enemigos.filter({ enemigo => enemigo.estoyVivo() }).head().recibirAtaque(habilidadDeAtaque)
 		self.image(nombre + "Ataca.png")
-		game.schedule(3000 ,self.image(nombre + ".png"))
+		//game.schedule(3000, self.image(nombre + ".png"))
 	}
 	
 	method seMuere() {
 		estoyVivo = false
 		game.say(self, "ME MORI")
-		game.schedule(3000 ,game.removeVisual(self))
+		//game.schedule(3000 ,game.removeVisual(self))
 	}
 	
 	method recibirAtaque(ataque, fuerzaDelHeroe) {

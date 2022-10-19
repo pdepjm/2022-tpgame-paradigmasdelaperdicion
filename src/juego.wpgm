@@ -12,6 +12,9 @@ program juego {
 	game.addVisual(seguidor1)
 	game.addVisual(seguidor2)
 	game.addVisual(bichito)
+	game.addVisual(barraLider)
+	game.addVisual(barraSeguidor1)
+	game.addVisual(barraSeguidor2)
 	teclado.configurarTeclas()
 	teclado.configurarColision()
 

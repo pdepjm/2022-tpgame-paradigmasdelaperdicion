@@ -4,7 +4,7 @@ import movimiento.*
 import turnos.*
 
 class Profesion {
-	var = nombre
+	var nombre
 	var vida = 100
 	var property image = nombre + ".png"
 	var enemigo = turno.enemigo()
@@ -12,7 +12,7 @@ class Profesion {
 	var defensa 
 	var curacion // numero de dos digitos
 	
-	method vida() = self.vida
+	method vida() = vida
 
 	method vida(cantidadDeVida) {
 		vida = (vida + cantidadDeVida).min(100)
@@ -25,9 +25,9 @@ class Profesion {
 	}
 
 	method seMuere() {
-		game.say(lider, "LA QUEDE")
+		//game.say(lider, "LA QUEDE")
 		self.image(nombre + "Muerto.png")
-		game.schedule(3000, self.image() = "invisible.png")
+		game.schedule(3000, self.image("invisible.png"))
 	}
 	
 	method estoyVivo() = vida > 0
@@ -41,8 +41,8 @@ class Profesion {
 	
 	method curar() {
 		var heroes = [lider, seguidor1, seguidor2] //Podria estar polemico
-		var heroeACurar = heroes.filter({ enemigo => enemigo.estoyVivo() }).head()
-		heroeACurar.vida(self.curacion)
+		var heroeACurar = heroes.filter({ unHeroe => unHeroe.estoyVivo() }).head()
+		heroeACurar.vida(curacion)
 		self.image(nombre + "Cura.png")
 		game.schedule(3000 , self.image(nombre + ".png"))
 	}
@@ -58,7 +58,5 @@ class Habilidad {
 	
 }
 
-
-
-const cascotaso = new Habilidad(danio = 1000)
-const glotoneria = new Habilidad(danio = 110)
+const cascotaso = new Habilidad(danio = 10)
+const glotoneria = new Habilidad(danio = 10)
