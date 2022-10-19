@@ -5,12 +5,16 @@ import heroes.*
 class Jugador {
     var property profesion 
 	
+	method vida()= profesion.vida()
+
 	method image() = profesion.image()
 	
 	method estoyVivo() = profesion.estoyVivo()
 	
 	method atacar(habilidad) = profesion.atacar(habilidad)
-	
+
+	method curar() = profesion.curar()
+	 
 	method recibirAtaque(habilidad) = profesion.recibirAtaque(habilidad)
 }
 
@@ -32,10 +36,30 @@ class Seguidor inherits Jugador {
 
 class BarraDeVida {
 	const personaje
-	method image() = "BarraVida" + self.numeroQueCorresponde() + ".png"
-	method position() = personaje.position().up(1) 
+
+	method image() {
+		const StringVida = self.numeroQueCorresponde()
+		if (StringVida == "0") {
+			self.seMurio()
+		}
+		else {
+			return "BarraVida" + StringVida + ".png"
+		}		
+	} 
 	
+	method position() = personaje.position().up(1) 
+
+	method seMurio() {
+		self.image("BarraVida" + "Muerto" + ".png")
+		game.schedule(3000, game.removeVisual(self))
+	}
+
+	method numeroQueCorresponde() = (personaje.vida() / 10).roundUp().toString()
 }
 
 const seguidor1 = new Seguidor(desfasaje = 4, profesion = doctor)
 const seguidor2 = new Seguidor(desfasaje = 9, profesion = leproso)
+
+const barraLider = new BarraDeVida(personaje = lider)
+const barraSeguidor1 = new BarraDeVida(personaje = seguidor1)
+const barraSeguidor2 = new BarraDeVida(personaje = seguidor2)

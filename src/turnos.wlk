@@ -17,12 +17,20 @@ object turno {
         teclado.estado(enCombate)
     }
 
-    method tocoletra(habilidad) {
+    method atacarCon(habilidad) {
+        heroes.head().atacar(habilidad)
+        heroes.remove(heroes.head())
         if (heroes.isEmpty()) {
             self.atacaElBicho()
         }
-        heroes.head().atacar(habilidad)
+    }
+
+    method curar(){
+        heroes.head().curar()
         heroes.remove(heroes.head())
+        if (heroes.isEmpty()) {
+            self.atacaElBicho()
+        }
     }
 
     method atacaElBicho() {

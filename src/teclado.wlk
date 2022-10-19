@@ -8,10 +8,10 @@ object teclado{
 	var property estado = enMovimiento
 
 	method configurarTeclas() {
-		keyboard.left().onPressDo({ estado.liderMovete(izquierda)} ) //momentoMovimiento.liderMovete()
+		keyboard.left().onPressDo({ estado.liderMovete(izquierda)}) 
 		keyboard.right().onPressDo({estado.liderMovete(derecha)})
 		keyboard.g().onPressDo({estado.modoCombate(cascotaso)})
-		keyboard.h().onPressDo({estado.modoCombate(cascotaso)})
+		keyboard.h().onPressDo({estado.modoCombate(/*curar*/)})
 		keyboard.j().onPressDo({estado.modoCombate(cascotaso)})
 		
 		keyboard.e().onPressDo({ game.stop() })	
@@ -38,14 +38,18 @@ object enMovimiento {
 	
 	method modoCombate(habilidad) {}
 	
+	method modoCombate() {}
 }
 
 object enCombate{
 	method liderMovete(direccion) {}
 	
 	method modoCombate(habilidad){
-		turno.tocoletra(habilidad)
+		turno.atacarCon(habilidad)
 	}
 	
+	method modoCombate(){
+		turno.curar()
+	}
 	
 }

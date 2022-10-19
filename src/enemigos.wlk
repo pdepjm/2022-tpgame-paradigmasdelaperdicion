@@ -10,29 +10,28 @@ class Bicho {
 	var property vida = 1000
 	var enemigos = [lider, seguidor1, seguidor2]
 	var property estoyVivo = true
-	var property imagen
+	var property nombre
 
-	method image() = imagen
+	method image() = nombre + ".png"
 
 	method atacar() {	
 		var habilidadDeAtaque = habilidades.anyOne()	
 		enemigos.filter({ enemigo => enemigo.estoyVivo() }).head().recibirAtaque(habilidadDeAtaque)
-		
+		self.image(nombre + "Ataca.png")
+		game.schedule(3000 ,self.image(nombre + ".png"))
 	}
 	
 	method seMuere() {
 		estoyVivo = false
-		//imagen = "muerto.png"//lider muerto
 		game.say(self, "ME MORI")
+		game.schedule(3000 ,game.removeVisual(self))
 	}
 	
 	method recibirAtaque(ataque, fuerzaDelHeroe) {
 		vida -= ataque.danio()  * fuerzaDelHeroe
 		if (vida <= 0) {
 			self.seMuere()
-			turno.finDelCombate()
-			game.removeVisual(self)
-			
+			turno.finDelCombate()	
 		}
 	}
     
@@ -44,4 +43,4 @@ class Bicho {
 
 }
 
-const bichito = new Bicho(imagen = "ectoplasma.png")
+const bichito = new Bicho(nombre = "ectoplasma")
