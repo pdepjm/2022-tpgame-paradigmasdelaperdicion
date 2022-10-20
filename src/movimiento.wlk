@@ -42,7 +42,7 @@ class BarraDeVida {
 	method image() {
         const stringVida = self.numeroQueCorresponde()
         if (stringVida == "0") {
-            game.schedule(3000, game.removeVisual(self))
+            game.schedule(3000, {game.removeVisual(self)})
             return "BarraVida" + "Muerto" + ".png"
         }
         else {

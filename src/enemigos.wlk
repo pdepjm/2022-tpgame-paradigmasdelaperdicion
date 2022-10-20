@@ -17,13 +17,13 @@ class Bicho {
 		var habilidadDeAtaque = habilidades.anyOne()	
 		enemigos.filter({ enemigo => enemigo.estoyVivo() }).head().recibirAtaque(habilidadDeAtaque)
 		self.image(nombre + "Ataca.png")
-		//game.schedule(3000, self.image(nombre + ".png"))
+		game.schedule(3000, {self.image(nombre + ".png")})
 	}
 	
 	method seMuere() {
 		estoyVivo = false
 		game.say(self, "ME MORI")
-		//game.schedule(3000 ,game.removeVisual(self))
+		game.schedule(3000 , {game.removeVisual(self)})
 	}
 	
 	method recibirAtaque(ataque, fuerzaDelHeroe) {

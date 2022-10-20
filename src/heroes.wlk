@@ -21,13 +21,13 @@ class Profesion {
 	method atacar(habilidad) {	
 		enemigo.recibirAtaque(habilidad, fuerza)
 		self.image(nombre + "Ataca.png")
-		game.schedule(3000 , self.image(nombre + ".png"))
+		game.schedule(3000 , {self.image(nombre + ".png")})
 	}
 
 	method seMuere() {
 		//game.say(lider, "LA QUEDE")
 		self.image(nombre + "Muerto.png")
-		game.schedule(3000, self.image("invisible.png"))
+		game.schedule(3000, {self.image("invisible.png")})
 	}
 	
 	method estoyVivo() = vida > 0
@@ -44,7 +44,7 @@ class Profesion {
 		var heroeACurar = heroes.filter({ unHeroe => unHeroe.estoyVivo() }).head()
 		heroeACurar.vida(curacion)
 		self.image(nombre + "Cura.png")
-		game.schedule(3000 , self.image(nombre + ".png"))
+		game.schedule(3000 , {self.image(nombre + ".png")})
 	}
 }
 
