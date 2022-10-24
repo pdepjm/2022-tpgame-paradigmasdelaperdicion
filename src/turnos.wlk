@@ -14,6 +14,7 @@ object turno {
     
     method iniciar() {
         self.heroes([lider, seguidor1, seguidor2].filter({heroe => heroe.estoyVivo()}))
+        soundProgram.musica(turnos)
         teclado.estado(enCombate)
     }
 
@@ -39,6 +40,7 @@ object turno {
     }
     
 	method finDelCombate(){
+        soundProgram.musica(movimiento)
 		teclado.estado(enMovimiento)
 		heroes.clear()
 	}

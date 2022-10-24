@@ -8,6 +8,7 @@ import heroes.*
 program juego {
 	
 	game.title("Perdidigma")
+	soundProgram.musica(movimiento)
 	game.addVisual(lider)
 	game.addVisual(seguidor1)
 	game.addVisual(seguidor2)
@@ -24,3 +25,16 @@ program juego {
 	game.height(50)
 	game.start()
 }
+
+program soundProgram {
+	var musica = movimiento
+
+	method musica(_musica){
+		musica = _musica
+		musica.shouldLoop(true)
+		game.schedule(500, { musica.play()} )
+	}
+}
+
+const turnos = game.sound("musica/turnos.mp3")
+const movimiento = game.sound("musica/movimiento.mp3")
