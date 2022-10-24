@@ -13,7 +13,6 @@ object teclado{
 		keyboard.g().onPressDo({estado.modoCombate(cascotaso)})
 		keyboard.h().onPressDo({estado.modoCombate(/*curar*/)})
 		keyboard.j().onPressDo({estado.modoCombate(cascotaso)})
-		
 		keyboard.e().onPressDo({ game.stop() })	
 	}
 	

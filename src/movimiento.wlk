@@ -37,26 +37,23 @@ class Seguidor inherits Jugador {
 }
 
 class BarraDeVida {
-	const personaje
+	var personaje
 
 	method image() {
         const stringVida = self.numeroQueCorresponde()
-        if (stringVida == "0") {
-            game.schedule(3000, {game.removeVisual(self)})
-            return "BarraVida" + "Muerto" + ".png"
-        }
-        else {
-            return "BarraVida" + stringVida + ".png"
-        }
+         if (stringVida == "0") 
+            return "invisible.png"
+         else
+        	return "BarraVida" + stringVida + ".png"
     }
 	
-	method position() = personaje.position().up(1) 
+	method position() = personaje.position().down(1) 
 
 	method numeroQueCorresponde() = (personaje.vida() / 10).roundUp().toString()
 }
 
-const seguidor1 = new Seguidor(desfasaje = 4, profesion = doctor)
-const seguidor2 = new Seguidor(desfasaje = 9, profesion = leproso)
+const seguidor1 = new Seguidor(desfasaje = 6, profesion = doctor)
+const seguidor2 = new Seguidor(desfasaje = 12, profesion = leproso)
 
 const barraLider = new BarraDeVida(personaje = lider)
 const barraSeguidor1 = new BarraDeVida(personaje = seguidor1)

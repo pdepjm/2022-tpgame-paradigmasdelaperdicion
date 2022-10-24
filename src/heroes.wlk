@@ -9,7 +9,7 @@ class Profesion {
 	var property image = nombre + ".png"
 	var enemigo = turno.enemigo()
 	var fuerza 
-	var defensa 
+	var defensa
 	var curacion // numero de dos digitos
 	
 	method vida() = vida
@@ -21,7 +21,7 @@ class Profesion {
 	method atacar(habilidad) {	
 		enemigo.recibirAtaque(habilidad, fuerza)
 		self.image(nombre + "Ataca.png")
-		game.schedule(3000 , {self.image(nombre + ".png")})
+		game.schedule(1000 , {self.image(nombre + ".png")})
 	}
 
 	method seMuere() {
@@ -33,29 +33,37 @@ class Profesion {
 	method estoyVivo() = vida > 0
 	
 	method recibirAtaque(ataque) {
+		//vida -= self.calculoDeDanio(ataque)
 		vida -= ataque.danio() / defensa
-		if (vida <= 0) {
+		if (vida <= 0) 
 			self.seMuere()
-		}
 	}
+		
+	//method calculoDeDanio(ataque) = ataque.danio()
 	
+
 	method curar() {
 		var heroes = [lider, seguidor1, seguidor2] //Podria estar polemico
 		var heroeACurar = heroes.filter({ unHeroe => unHeroe.estoyVivo() }).head()
 		heroeACurar.vida(curacion)
 		self.image(nombre + "Cura.png")
-		game.schedule(3000 , {self.image(nombre + ".png")})
+		game.schedule(1000 , {self.image(nombre + ".png")})
 	}
 }
 
-const caballero = new Profesion(nombre = "caballero", fuerza = 2, defensa = 1, curacion = 10)
-const doctor = new Profesion(nombre = "doctor", fuerza = 1, defensa = 2, curacion = 30)
-const leproso = new Profesion(nombre = "leproso", fuerza = 1, defensa = 2, curacion = 10)
+/*class NoCaballero inherits Profesion {
+	var defensa
+
+	override method calculoDeDanio(ataque) = super(ataque) / defensa
+}*/
+
+const caballero = new Profesion(nombre = "caballero", fuerza = 4, defensa = 1, curacion = 10)
+const doctor = new Profesion(nombre = "doctor", fuerza = 2, defensa = 2, curacion = 30)
+const leproso = new Profesion(nombre = "leproso", fuerza = 3, defensa = 2, curacion = 10)
 
 
 class Habilidad {
 	var property danio
-	
 }
 
 const cascotaso = new Habilidad(danio = 10)
