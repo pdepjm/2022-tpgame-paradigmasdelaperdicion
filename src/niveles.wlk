@@ -37,10 +37,6 @@ object nivelJuego{
 
 class Visual {
 	var property image
-	
-	//Posicion aleatoria
-	//const x = 2.randomUpTo(27.truncate(2))
-    //const y = 2.randomUpTo(17.truncate(2))
 	var property position = game.at(50,50)
 	
 }
