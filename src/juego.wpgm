@@ -3,6 +3,7 @@ import movimiento.*
 import teclado.*
 import enemigos.*
 import heroes.*
+import niveles.*
 
 
 program juego {
@@ -10,24 +11,13 @@ program juego {
 	const movimiento = game.sound("./musica/movimiento.mp3")
     movimiento.shouldLoop(true)
     game.schedule(500, { movimiento.play()})
-    
-	game.title("Perdidigma")
-	game.addVisual(lider)
-	game.addVisual(seguidor1)
-	game.addVisual(seguidor2)
-	game.addVisual(bichito)
-	game.addVisual(barraBicho)
-	game.addVisual(barraLider)
-	game.addVisual(barraSeguidor1)
-	game.addVisual(barraSeguidor2)
-	teclado.configurarTeclas()
-	teclado.configurarColision()
-
-	game.boardGround("fondito.png")
+	
 	game.cellSize(100)
 	game.width(50)
 	game.height(50)
-	game.start()
+	
+    nivelIntro.inicio()
+    game.start()
 }
 
 
