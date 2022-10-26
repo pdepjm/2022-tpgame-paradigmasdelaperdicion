@@ -1,12 +1,14 @@
+
 import wollok.game.*
 import heroes.*
 import movimiento.*
 import teclado.*
 import enemigos.*
+import niveles.*
 
 object turno {
     var heroes = []
-    var property enemigo = bichito
+    var property enemigo = ectoplasma
 	
     method heroes(_heroes) {
         heroes.addAll(_heroes)

@@ -28,6 +28,10 @@ object lider inherits Jugador(profesion = caballero) {
 		position = direccion.siguientePosicion(self.position(), cantidad)        
 	}
 	
+	method moverAlInicio(){
+		position = game.at(20,5)
+	}
+	
 }
 
 class Seguidor inherits Jugador {

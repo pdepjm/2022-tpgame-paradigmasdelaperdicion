@@ -25,7 +25,6 @@ class Profesion {
 	}
 
 	method seMuere() {
-		//game.say(lider, "LA QUEDE")
 		self.image(nombre + "Muerto.png")
 		game.schedule(3000, {self.image("invisible.png")})
 	}
@@ -33,7 +32,6 @@ class Profesion {
 	method estoyVivo() = vida > 0
 	
 	method recibirAtaque(ataque) {
-		//vida -= self.calculoDeDanio(ataque)
 		vida -= ataque.danio() / defensa
 		if (vida <= 0) 
 			self.seMuere()

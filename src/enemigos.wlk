@@ -22,8 +22,8 @@ class Bicho {
 	
 	method seMuere() {
 		estoyVivo = false
-		
-		game.schedule(3000 , {game.removeVisual(self)})
+		self.image(nombre + "Muerto.png")
+		game.schedule(3000 , {removedorDeImagenes.eliminarVisual(self)})
 	}
 	
 	method recibirAtaque(ataque, fuerzaDelHeroe) {
@@ -41,7 +41,7 @@ class Bicho {
     }
 
 }
-object barraBicho inherits BarraDeVida(personaje = bichito) {
+class BarraBicho inherits BarraDeVida {
 	const coeficienteVida = 100 / personaje.vida()
 
 	override method numeroQueCorresponde() = (personaje.vida() * coeficienteVida * 0.1).roundUp().toString()
@@ -52,5 +52,8 @@ object barraBicho inherits BarraDeVida(personaje = bichito) {
 
 	override method position() = personaje.position().up(5)
 }
-//const barraBicho = new BarraDeVida(personaje = bichito)
-const bichito = new Bicho(nombre = "ectoplasma")
+const barraEctoplasma = new BarraBicho(personaje = ectoplasma)
+//const barraHongo = new BarraBicho(personaje = hongo)
+
+const ectoplasma = new Bicho(nombre = "ectoplasma")
+const hongo = new Bicho(nombre = "hongo")

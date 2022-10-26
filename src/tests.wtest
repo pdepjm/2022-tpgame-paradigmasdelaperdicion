@@ -20,3 +20,5 @@ test "si el seguidor 1 esta en la posicion (14, 5) y se mueve una vez para la de
 	lider.mover(derecha, 1)
 	assert.equals(game.at(15, 5), seguidor1.position())
 }
+
+//hay que hacer los nuevos tests de posicion y los tests de la cantidad de danio

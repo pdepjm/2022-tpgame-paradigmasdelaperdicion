@@ -3,6 +3,7 @@ import enemigos.*
 import movimiento.*
 import heroes.*
 import turnos.*
+import niveles.*
 
 object teclado{
 	var property estado = enMovimiento
@@ -11,19 +12,24 @@ object teclado{
 		keyboard.left().onPressDo({ estado.liderMovete(izquierda)}) 
 		keyboard.right().onPressDo({estado.liderMovete(derecha)})
 		keyboard.g().onPressDo({estado.modoCombate(cascotaso)})
-		keyboard.h().onPressDo({estado.modoCombate(/*curar*/)})
-		keyboard.j().onPressDo({estado.modoCombate(cascotaso)})
+		keyboard.h().onPressDo({estado.modoCombate(/*curacion*/)})
 		keyboard.e().onPressDo({ game.stop() })	
 	}
 	
 	method configurarColision() {
-		game.onCollideDo(lider, { algo => algo.colisionConHeroe()  })
+		game.onCollideDo(lider, { algo => algo.colisionConHeroe()})
 	}
 
 }
 
 object izquierda { 
-	method siguientePosicion(position,cantidad) = position.left(cantidad) 
+	method siguientePosicion(position,cantidad){
+		if(position.left(cantidad) == game.at(12,5)){
+			return	position
+		}else{
+			return position.left(cantidad)
+		}
+	}
 }
 
 object derecha { 
@@ -51,4 +57,10 @@ object enCombate{
 		turno.curar()
 	}
 	
+}
+
+object removedorDeImagenes{
+	method eliminarVisual(visual){
+		game.removeVisual(visual)
+	}
 }
