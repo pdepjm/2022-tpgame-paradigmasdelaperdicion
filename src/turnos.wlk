@@ -41,6 +41,7 @@ object turno {
     }
     
 	method finDelCombate(){
+		//game.schedule(3000 , {teclado.estado(enMovimiento)})
 		teclado.estado(enMovimiento)
 		heroes.clear()
 	}

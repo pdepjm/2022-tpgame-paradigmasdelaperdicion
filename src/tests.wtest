@@ -21,4 +21,18 @@ test "si el seguidor 1 esta en la posicion (14, 5) y se mueve una vez para la de
 	assert.equals(game.at(15, 5), seguidor1.position())
 }
 
-//hay que hacer los nuevos tests de posicion y los tests de la cantidad de danio
+//hay que hacer los nuevos tests de posicion y los tests de la cantidad de danio\
+
+test "Ataque del caballero al ectoplasma"{
+	
+	const caballero = new Profesion(nombre = "caballero", fuerza = 4, defensa = 1, curacion = 10)
+	const hola = new Bicho(nombre = "ectoplasma")
+		
+	turno.enemigo(ectoplasma)
+	
+	caballero.atacar(cascotaso)
+	
+	assert.equals(960, ectoplasma.vida())
+
+	
+}

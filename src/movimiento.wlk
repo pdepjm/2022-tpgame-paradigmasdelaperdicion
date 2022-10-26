@@ -18,6 +18,8 @@ class Jugador {
 	method curar() = profesion.curar()
 	 
 	method recibirAtaque(habilidad) = profesion.recibirAtaque(habilidad)
+	
+	method cuantoDanioMeHacen(habilidad) = profesion.cuantoDanioMeHacen(habilidad)
 }
 
 object lider inherits Jugador(profesion = caballero) {
@@ -41,7 +43,7 @@ class Seguidor inherits Jugador {
 }
 
 class BarraDeVida {
-	var personaje
+	var personaje = lider
 
 	method image() {
         const stringVida = self.numeroQueCorresponde()

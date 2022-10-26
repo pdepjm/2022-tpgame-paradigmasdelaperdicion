@@ -3,6 +3,7 @@ import movimiento.*
 import teclado.*
 import enemigos.*
 import heroes.*
+import turnos.*
 
 
 object nivelIntro {
@@ -39,7 +40,7 @@ class NivelJuego{
 
 	method configurarNivel(){
 		game.addVisual(enemigo)
-		//game.addVisual(barraEnemigo)
+		game.addVisual(barraEnemigo)
 	}
 }	
 
@@ -55,10 +56,33 @@ object tope {
 	var property image = "invisible.png"
 
 	method colisionConHeroe(){
+		turno.enemigo(hongo)
 		lider.moverAlInicio()
 		nivel2.configurarNivel()
+		
 	}
 }
 
 const nivel1 = new NivelJuego(enemigo = ectoplasma, barraEnemigo = barraEctoplasma)
-const nivel2 = new NivelJuego(enemigo = hongo, barraEnemigo = null)
+const nivel2 = new NivelJuego(enemigo = hongo, barraEnemigo = barraHongo)
+
+
+object ganaste {
+	
+	method position() = game.center()
+	
+	method text() = "has completado la mazmorra"
+	
+	method textColor() = "00FF00FF"
+}
+
+
+object perdiste {
+	
+	method position() = game.center()
+	
+	method text() = "has muerto"
+	
+	method textColor() = "FF0000FF"
+	
+}

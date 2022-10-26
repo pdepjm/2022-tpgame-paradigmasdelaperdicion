@@ -3,6 +3,7 @@ import heroes.*
 import movimiento.*
 import teclado.*
 import turnos.*
+import niveles.*
 
 class Bicho {
 	var habilidades = [glotoneria]
@@ -13,10 +14,20 @@ class Bicho {
 	var property nombre
 	var property image = nombre + ".png"
 
-	method atacar() {	
+	method atacar() {
+		var aQuienAtaco = enemigos.filter({ enemigo => enemigo.estoyVivo()})
+		
 		var habilidadDeAtaque = habilidades.anyOne()	
-		enemigos.filter({ enemigo => enemigo.estoyVivo() }).head().recibirAtaque(habilidadDeAtaque)
+		
+		if (aQuienAtaco.size() == 1 && aQuienAtaco.head().vida() - aQuienAtaco.head().cuantoDanioMeHacen(habilidadDeAtaque) <= 0){
+			game.clear()
+			game.addVisualCharacter(perdiste)
+		}
+		
+		aQuienAtaco.head().recibirAtaque(habilidadDeAtaque)
+		
 		self.image(nombre + "Ataca.png")
+		
 		game.schedule(1000, {self.image(nombre + ".png")})
 	}
 	
@@ -24,6 +35,7 @@ class Bicho {
 		estoyVivo = false
 		self.image(nombre + "Muerto.png")
 		game.schedule(3000 , {removedorDeImagenes.eliminarVisual(self)})
+		
 	}
 	
 	method recibirAtaque(ataque, fuerzaDelHeroe) {
@@ -42,18 +54,29 @@ class Bicho {
 
 }
 class BarraBicho inherits BarraDeVida {
-	const coeficienteVida = 100 / personaje.vida()
 
-	override method numeroQueCorresponde() = (personaje.vida() * coeficienteVida * 0.1).roundUp().toString()
-
-	method personaje(_personaje) {
-		personaje = _personaje
-	}
-
-	override method position() = personaje.position().up(5)
+	override method position() = personaje.position().up(8)
+	
+	override method numeroQueCorresponde() = (personaje.vida() / 100).roundUp().toString()
 }
+
+object hongo inherits Bicho (nombre="hongo") {
+	override method seMuere() {		
+		super()
+		game.clear()
+		game.addVisualCharacter(ganaste)
+	}
+}
+
+/*object ectoplasma inherits Bicho (nombre="ectoplasma") {
+	override method seMuere() {		
+		super()
+		game.clear()
+		game.addVisualCharacter(ganaste)
+	}
+} */
+
 const barraEctoplasma = new BarraBicho(personaje = ectoplasma)
-//const barraHongo = new BarraBicho(personaje = hongo)
+const barraHongo = new BarraBicho(personaje = hongo)
 
 const ectoplasma = new Bicho(nombre = "ectoplasma")
-const hongo = new Bicho(nombre = "hongo")

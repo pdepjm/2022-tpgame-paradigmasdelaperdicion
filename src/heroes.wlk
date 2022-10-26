@@ -37,7 +37,7 @@ class Profesion {
 			self.seMuere()
 	}
 		
-	//method calculoDeDanio(ataque) = ataque.danio()
+	method cuantoDanioMeHacen(ataque) = ataque.danio() / defensa
 	
 
 	method curar() {
@@ -65,4 +65,4 @@ class Habilidad {
 }
 
 const cascotaso = new Habilidad(danio = 10)
-const glotoneria = new Habilidad(danio = 10)
+const glotoneria = new Habilidad(danio = 20)
