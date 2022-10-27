@@ -6,8 +6,8 @@ import turnos.*
 import niveles.*
 
 class Bicho {
-	const habilidades = [glotoneria, ataque2malo, ataque3malo, ataque4malo]
-    const property position = game.at(30, 5)
+	const habilidades = [ataque1malo, ataque2malo, ataque3malo, ataque4malo,ataque5malo,ataque6malo,ataque7malo,ataque8malo]
+    const property position = game.at(30, 3)
 	var property vida = 1000
 	const enemigos = [lider, seguidor1, seguidor2]
 	var property estoyVivo = true
@@ -54,7 +54,10 @@ class Bicho {
 
 }
 
-object hongo inherits Bicho (nombre="hongo") {
+const ectoplasma = new Bicho(nombre = "ectoplasma")
+object hongo inherits Bicho (nombre="hongo", vida=1500) {
+	
+	
 	override method seMuere() {		
 		super()
 		game.clear()
@@ -65,11 +68,12 @@ object hongo inherits Bicho (nombre="hongo") {
 class BarraBicho inherits BarraDeVida {
 
 	override method position() = personaje.position().up(8)
-	
-	override method numeroQueCorresponde() = (personaje.vida() / 100).roundUp().toString()
 }
 
-const barraEctoplasma = new BarraBicho(personaje = ectoplasma)
-const barraHongo = new BarraBicho(personaje = hongo)
 
-const ectoplasma = new Bicho(nombre = "ectoplasma")
+object barraHongo inherits BarraBicho(personaje = hongo){
+	override method numeroQueCorresponde() = (personaje.vida() / 150).roundUp().toString()
+}
+object barraEctoplasma inherits BarraBicho(personaje = ectoplasma){
+	override method numeroQueCorresponde() = (personaje.vida() / 100).roundUp().toString()
+}

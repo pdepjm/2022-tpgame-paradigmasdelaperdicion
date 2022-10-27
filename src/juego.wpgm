@@ -14,7 +14,7 @@ program juego {
 	
 	game.cellSize(100)
 	game.width(50)
-	game.height(50)
+	game.height(30)
 	
     nivelIntro.inicio()
     game.start()

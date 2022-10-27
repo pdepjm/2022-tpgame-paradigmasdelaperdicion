@@ -8,7 +8,7 @@ import turnos.*
 
 object nivelIntro {
 	
-	const comienzo = new Visual (image = "intro2.jpg", position = game.at(0,0))
+	const comienzo = new Visual (image = "intro2a.jpg", position = game.at(0,0))
 	
 	method inicio(){
 		game.title("Perdidigma")
@@ -52,7 +52,7 @@ class Visual {
 
 object tope {
 	
-	const property position = game.at(50,5)
+	const property position = game.at(50,3)
 	var property image = "invisible.png"
 
 	method colisionConHeroe(){
@@ -69,20 +69,15 @@ const nivel2 = new NivelJuego(enemigo = hongo, barraEnemigo = barraHongo)
 
 object ganaste {
 	
-	method position() = game.center()
+	method position() = game.center().left(10)
 	
-	method text() = "has completado la mazmorra"
-	
-	method textColor() = "00FF00FF"
+	method image() = "victoria.png"
 }
 
 
 object perdiste {
 	
-	method position() = game.center()
+	method position() = game.center().left(10)
 	
-	method text() = "has muerto"
-	
-	method textColor() = "FF0000FF"
-	
+	method image() = "derrota.png"
 }

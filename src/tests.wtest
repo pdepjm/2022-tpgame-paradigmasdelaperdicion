@@ -6,22 +6,22 @@ import enemigos.*
 import turnos.*
 
 //TESTS DE MOVIMIENTO Y POSICION
-test "si el lider esta en la posicion (20, 5) y se mueve una vez para la derecha, el lider queda en la posicion (21, 5)" {
+test "si el lider esta en la posicion (20, 3) y se mueve una vez para la derecha, el lider queda en la posicion (21, 3)" {
 	lider.mover(derecha, 1)
-	assert.equals(game.at(21, 5), lider.position())
+	assert.equals(game.at(21, 3), lider.position())
 }
 
-test "si el lider esta en la posicion (20, 5) y se mueve una vez para la izquierda, el lider queda en la posicion (19, 5)" {
+test "si el lider esta en la posicion (20, 3) y se mueve una vez para la izquierda, el lider queda en la posicion (19, 3)" {
 	lider.mover(izquierda, 1)
-	assert.equals(game.at(19, 5), lider.position())
+	assert.equals(game.at(19, 3), lider.position())
 }
 
-test "si el seguidor 1 esta en la posicion (14, 5) y se mueve una vez para la derecha, el lider queda en la posicion (15, 5)" {
+test "si el seguidor 1 esta en la posicion (14, 3) y se mueve una vez para la derecha, el lider queda en la posicion (15, 3)" {
 	lider.mover(derecha, 1)
-	assert.equals(game.at(15, 5), seguidor1.position())
+	assert.equals(game.at(15, 3), seguidor1.position())
 }
 
-//hay que hacer los nuevos tests de posicion y los tests de la cantidad de danio\
+//hay que hacer los nuevos los tests de la cantidad de danio\
 
 test "Ataque del caballero al ectoplasma"{
 	
@@ -33,17 +33,17 @@ test "Ataque del caballero al ectoplasma"{
 	
 	caballero2.atacar(cascotaso)
 	
-	assert.equals(960, ectoplasma.vida())	
+	assert.equals(985, ectoplasma.vida())	
 }
-test "Recibir ataque caballero glotoneria"{
+test "Recibir ataque caballero ataque1malo"{
 	
 	const caballero2 = new Caballero()
 		
 	assert.equals(100, caballero2.vida())	
 	
-	caballero2.recibirAtaque(glotoneria)
+	caballero2.recibirAtaque(ataque1malo)
 	
-	assert.equals(80, caballero2.vida())	
+	assert.equals(93.33333, caballero2.vida())	
 }
 
 test "Ataque del doctor al ectoplasma"{
@@ -56,17 +56,17 @@ test "Ataque del doctor al ectoplasma"{
 	
 	doctor2.atacar(cascotaso)
 	
-	assert.equals(980, ectoplasma.vida())	
+	assert.equals(970, ectoplasma.vida())	
 }
-test "Recibir ataque brujo glotoneria"{
+test "Recibir ataque doctor ataque1malo"{
 	
 	const doctor2 = new Doctor()
 		
 	assert.equals(100, doctor2.vida())	
 	
-	doctor2.recibirAtaque(glotoneria)
+	doctor2.recibirAtaque(ataque1malo)
 	
-	assert.equals(90, doctor2.vida())	
+	assert.equals(80, doctor2.vida())	
 }
 test "Ataque del leproso al ectoplasma"{
 	
@@ -78,7 +78,7 @@ test "Ataque del leproso al ectoplasma"{
 	
 	leproso2.atacar(cascotaso)
 	
-	assert.equals(970, ectoplasma.vida())	
+	assert.equals(940, ectoplasma.vida())	
 }
 test "Recibir ataque leproso glotoneria"{
 	
@@ -86,9 +86,9 @@ test "Recibir ataque leproso glotoneria"{
 		
 	assert.equals(100, leproso2.vida())	
 	
-	leproso2.recibirAtaque(glotoneria)
+	leproso2.recibirAtaque(ataque1malo)
 	
-	assert.equals(90, leproso2.vida())	
+	assert.equals(80, leproso2.vida())	
 }
 
 

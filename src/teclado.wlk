@@ -19,12 +19,13 @@ object teclado{
 	method configurarColision() {
 		game.onCollideDo(lider, { algo => algo.colisionConHeroe()})
 	}
-
+	
+	
 }
 
 object izquierda { 
 	method siguientePosicion(position,cantidad){
-		if(position.left(cantidad) == game.at(12,5)){
+		if(position.left(cantidad) == game.at(12,3)){
 			return	position
 		}else{
 			return position.left(cantidad)

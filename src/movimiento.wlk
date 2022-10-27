@@ -1,3 +1,4 @@
+
 import wollok.game.*
 import teclado.*
 import heroes.*
@@ -23,7 +24,7 @@ class Jugador {
 }
 
 object lider inherits Jugador(profesion = caballero) {
-    var property position = game.at(20, 5)
+    var property position = game.at(20, 3)
     const seguidores = [seguidor1 , seguidor2]
 
     method mover(direccion,cantidad) {
@@ -31,7 +32,7 @@ object lider inherits Jugador(profesion = caballero) {
 	}
 	
 	method moverAlInicio(){
-		position = game.at(20,5)
+		position = game.at(20,3)
 	}
 	
 }

@@ -1,3 +1,4 @@
+
 import wollok.game.*
 import enemigos.*
 import movimiento.*
@@ -49,9 +50,9 @@ class Profesion {
 		game.schedule(1000 , {self.image(nombre + ".png")})
 	}
 }
-class Caballero inherits Profesion(nombre = "caballero", fuerza = 4, defensa = 1, curacion = 10){}
-class Doctor inherits Profesion(nombre = "doctor", fuerza = 2, defensa = 2, curacion = 30){}
-class Leproso inherits Profesion(nombre = "leproso", fuerza = 3, defensa = 2, curacion = 10){}
+class Caballero inherits Profesion(nombre = "caballero", fuerza = 1, defensa = 3, curacion = 15){}
+class Doctor inherits Profesion(nombre = "doctor", fuerza = 2, defensa = 1, curacion = 20){}
+class Leproso inherits Profesion(nombre = "leproso", fuerza = 4, defensa = 1, curacion = 10){}
 
 
 const caballero = new Caballero()
@@ -62,11 +63,15 @@ const leproso = new Leproso()
 class Habilidad {
 	var property danio
 }
-const ataque2malo = new Habilidad(danio = 15)
-const ataque3malo = new Habilidad(danio = 30)
-const ataque4malo = new Habilidad(danio = 25)
-const cascotaso = new Habilidad(danio = 10)
-const glotoneria = new Habilidad(danio = 20)
+const ataque1malo = new Habilidad(danio = 20)
+const ataque2malo = new Habilidad(danio = 40)
+const ataque3malo = new Habilidad(danio = 50)
+const ataque4malo = new Habilidad(danio = 100)
+const ataque5malo = new Habilidad(danio = 60)
+const ataque6malo = new Habilidad(danio = 75)
+const ataque7malo = new Habilidad(danio = 30)
+const ataque8malo = new Habilidad(danio = 200)
+const cascotaso = new Habilidad(danio = 15)
 
 
 
