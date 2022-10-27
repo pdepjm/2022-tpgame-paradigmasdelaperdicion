@@ -10,7 +10,7 @@
 
 ## Capturas
 
-(agregar)
+![intro](./instrucciones/intro.png)
 
 ## Reglas de Juego / Instrucciones
 
