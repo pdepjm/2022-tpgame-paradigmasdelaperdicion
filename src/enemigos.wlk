@@ -6,18 +6,18 @@ import turnos.*
 import niveles.*
 
 class Bicho {
-	var habilidades = [glotoneria]
+	const habilidades = [glotoneria, ataque2malo, ataque3malo, ataque4malo]
     const property position = game.at(30, 5)
 	var property vida = 1000
-	var enemigos = [lider, seguidor1, seguidor2]
+	const enemigos = [lider, seguidor1, seguidor2]
 	var property estoyVivo = true
 	var property nombre
 	var property image = nombre + ".png"
 
 	method atacar() {
-		var aQuienAtaco = enemigos.filter({ enemigo => enemigo.estoyVivo()})
+		const aQuienAtaco = enemigos.filter({ enemigo => enemigo.estoyVivo()})
 		
-		var habilidadDeAtaque = habilidades.anyOne()	
+		const habilidadDeAtaque = habilidades.anyOne()	
 		
 		if (aQuienAtaco.size() == 1 && aQuienAtaco.head().vida() - aQuienAtaco.head().cuantoDanioMeHacen(habilidadDeAtaque) <= 0){
 			game.clear()
@@ -53,12 +53,6 @@ class Bicho {
     }
 
 }
-class BarraBicho inherits BarraDeVida {
-
-	override method position() = personaje.position().up(8)
-	
-	override method numeroQueCorresponde() = (personaje.vida() / 100).roundUp().toString()
-}
 
 object hongo inherits Bicho (nombre="hongo") {
 	override method seMuere() {		
@@ -68,13 +62,12 @@ object hongo inherits Bicho (nombre="hongo") {
 	}
 }
 
-/*object ectoplasma inherits Bicho (nombre="ectoplasma") {
-	override method seMuere() {		
-		super()
-		game.clear()
-		game.addVisualCharacter(ganaste)
-	}
-} */
+class BarraBicho inherits BarraDeVida {
+
+	override method position() = personaje.position().up(8)
+	
+	override method numeroQueCorresponde() = (personaje.vida() / 100).roundUp().toString()
+}
 
 const barraEctoplasma = new BarraBicho(personaje = ectoplasma)
 const barraHongo = new BarraBicho(personaje = hongo)

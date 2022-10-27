@@ -25,14 +25,82 @@ test "si el seguidor 1 esta en la posicion (14, 5) y se mueve una vez para la de
 
 test "Ataque del caballero al ectoplasma"{
 	
-	const caballero = new Profesion(nombre = "caballero", fuerza = 4, defensa = 1, curacion = 10)
-	const hola = new Bicho(nombre = "ectoplasma")
+	const caballero2 = new Caballero()
 		
 	turno.enemigo(ectoplasma)
 	
-	caballero.atacar(cascotaso)
+	assert.equals(1000, ectoplasma.vida())	
 	
-	assert.equals(960, ectoplasma.vida())
-
+	caballero2.atacar(cascotaso)
 	
+	assert.equals(960, ectoplasma.vida())	
 }
+test "Recibir ataque caballero glotoneria"{
+	
+	const caballero2 = new Caballero()
+		
+	assert.equals(100, caballero2.vida())	
+	
+	caballero2.recibirAtaque(glotoneria)
+	
+	assert.equals(80, caballero2.vida())	
+}
+
+test "Ataque del doctor al ectoplasma"{
+	
+	const doctor2 = new Doctor()
+		
+	turno.enemigo(ectoplasma)
+	
+	assert.equals(1000, ectoplasma.vida())	
+	
+	doctor2.atacar(cascotaso)
+	
+	assert.equals(980, ectoplasma.vida())	
+}
+test "Recibir ataque brujo glotoneria"{
+	
+	const doctor2 = new Doctor()
+		
+	assert.equals(100, doctor2.vida())	
+	
+	doctor2.recibirAtaque(glotoneria)
+	
+	assert.equals(90, doctor2.vida())	
+}
+test "Ataque del leproso al ectoplasma"{
+	
+	const leproso2 = new Leproso()
+		
+	turno.enemigo(ectoplasma)
+	
+	assert.equals(1000, ectoplasma.vida())	
+	
+	leproso2.atacar(cascotaso)
+	
+	assert.equals(970, ectoplasma.vida())	
+}
+test "Recibir ataque leproso glotoneria"{
+	
+	const leproso2 = new Leproso()
+		
+	assert.equals(100, leproso2.vida())	
+	
+	leproso2.recibirAtaque(glotoneria)
+	
+	assert.equals(90, leproso2.vida())	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

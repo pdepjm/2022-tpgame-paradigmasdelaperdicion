@@ -7,19 +7,20 @@ class Profesion {
 	var nombre
 	var vida = 100
 	var property image = nombre + ".png"
-	var enemigo = turno.enemigo()
 	var fuerza 
 	var defensa
 	var curacion // numero de dos digitos
 	
 	method vida() = vida
+	
+	method enemigo() = turno.enemigo()
 
 	method vida(cantidadDeVida) {
 		vida = (vida + cantidadDeVida).min(100)
 	}
 	
 	method atacar(habilidad) {	
-		enemigo.recibirAtaque(habilidad, fuerza)
+		self.enemigo().recibirAtaque(habilidad, fuerza)
 		self.image(nombre + "Ataca.png")
 		game.schedule(1000 , {self.image(nombre + ".png")})
 	}
@@ -32,7 +33,7 @@ class Profesion {
 	method estoyVivo() = vida > 0
 	
 	method recibirAtaque(ataque) {
-		vida -= ataque.danio() / defensa
+		vida -= self.cuantoDanioMeHacen(ataque)
 		if (vida <= 0) 
 			self.seMuere()
 	}
@@ -41,28 +42,35 @@ class Profesion {
 	
 
 	method curar() {
-		var heroes = [lider, seguidor1, seguidor2] //Podria estar polemico
+		var heroes = [lider, seguidor1, seguidor2] 
 		var heroeACurar = heroes.filter({ unHeroe => unHeroe.estoyVivo() }).head()
 		heroeACurar.vida(curacion)
 		self.image(nombre + "Cura.png")
 		game.schedule(1000 , {self.image(nombre + ".png")})
 	}
 }
+class Caballero inherits Profesion(nombre = "caballero", fuerza = 4, defensa = 1, curacion = 10){}
+class Doctor inherits Profesion(nombre = "doctor", fuerza = 2, defensa = 2, curacion = 30){}
+class Leproso inherits Profesion(nombre = "leproso", fuerza = 3, defensa = 2, curacion = 10){}
 
-/*class NoCaballero inherits Profesion {
-	var defensa
 
-	override method calculoDeDanio(ataque) = super(ataque) / defensa
-}*/
-
-const caballero = new Profesion(nombre = "caballero", fuerza = 4, defensa = 1, curacion = 10)
-const doctor = new Profesion(nombre = "doctor", fuerza = 2, defensa = 2, curacion = 30)
-const leproso = new Profesion(nombre = "leproso", fuerza = 3, defensa = 2, curacion = 10)
+const caballero = new Caballero()
+const doctor = new Doctor()
+const leproso = new Leproso()
 
 
 class Habilidad {
 	var property danio
 }
-
+const ataque2malo = new Habilidad(danio = 15)
+const ataque3malo = new Habilidad(danio = 30)
+const ataque4malo = new Habilidad(danio = 25)
 const cascotaso = new Habilidad(danio = 10)
 const glotoneria = new Habilidad(danio = 20)
+
+
+
+
+
+
+
