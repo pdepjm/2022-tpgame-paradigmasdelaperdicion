@@ -9,13 +9,17 @@ import niveles.*
 object turno {
     var heroes = []
     var property enemigo = ectoplasma
+    
+    method jugadorActual() = self.aCualesAtacaElBicho().head()
+    
+    method aCualesAtacaElBicho() = [lider, seguidor1, seguidor2].filter({heroe => heroe.estoyVivo()})
 	
     method heroes(_heroes) {
         heroes.addAll(_heroes)
     }
     
     method iniciar() {
-        self.heroes([lider, seguidor1, seguidor2].filter({heroe => heroe.estoyVivo()}))
+        self.heroes(self.aCualesAtacaElBicho())
         teclado.estado(enCombate) 
     }
 
@@ -36,7 +40,12 @@ object turno {
     
 
     method atacaElBicho() {
-        enemigo.atacar()        
+    	const habilidadDeAtaque = enemigo.elegirAtaque()
+    	if(self.moririanCon(habilidadDeAtaque)){
+    		game.clear()
+			game.addVisualCharacter(perdiste)
+    	}
+        enemigo.atacar(habilidadDeAtaque)        
         self.iniciar()
     }
     
@@ -46,5 +55,8 @@ object turno {
 		heroes.clear()
 	}
 	
+	method moririanCon(habilidadDeAtaque) = 
+		self.aCualesAtacaElBicho().size() == 1 && 
+		self.jugadorActual().vida() - self.jugadorActual().cuantoDanioMeHacen(habilidadDeAtaque) <= 0
 	
 }

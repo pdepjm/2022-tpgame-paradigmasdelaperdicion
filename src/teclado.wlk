@@ -19,12 +19,13 @@ object teclado{
 	method configurarColision() {
 		game.onCollideDo(lider, { algo => algo.colisionConHeroe()})
 	}
-	
-	
 }
 
-object izquierda { 
-	method siguientePosicion(position,cantidad){
+class Direccion {
+	method siguientePosicion(position,cantidad)
+}
+object izquierda inherits Direccion { 
+	override method siguientePosicion(position,cantidad){
 		if(position.left(cantidad) == game.at(12,3)){
 			return	position
 		}else{
@@ -33,28 +34,35 @@ object izquierda {
 	}
 }
 
-object derecha { 
-	method siguientePosicion(position,cantidad) = position.right(cantidad) 
+object derecha inherits Direccion { 
+	override method siguientePosicion(position,cantidad) = position.right(cantidad) 
 }
 
-object enMovimiento {
-	method liderMovete(direccion) {
+class Estado {
+	method liderMovete(direccion)
+	
+	method modoCombate(habilidad)
+	
+	method modoCombate()
+}
+object enMovimiento inherits Estado {
+	override method liderMovete(direccion) {
 		lider.mover(direccion, 2)
 	}
 	
-	method modoCombate(habilidad) {}
+	override method modoCombate(habilidad) {}
 	
-	method modoCombate() {}
+	override method modoCombate() {}
 }
 
-object enCombate{
-	method liderMovete(direccion) {}
+object enCombate inherits Estado{
+	override method liderMovete(direccion) {}
 	
-	method modoCombate(habilidad){
+	override method modoCombate(habilidad){
 		turno.atacarCon(habilidad)
 	}
 	
-	method modoCombate(){
+	override method modoCombate(){
 		turno.curar()
 	}
 	

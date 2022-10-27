@@ -9,26 +9,17 @@ class Bicho {
 	const habilidades = [ataque1malo, ataque2malo, ataque3malo, ataque4malo,ataque5malo,ataque6malo,ataque7malo,ataque8malo]
     const property position = game.at(30, 3)
 	var property vida = 1000
-	const enemigos = [lider, seguidor1, seguidor2]
 	var property estoyVivo = true
 	var property nombre
 	var property image = nombre + ".png"
+	
+	method elegirAtaque() = habilidades.anyOne()	
 
-	method atacar() {
-		const aQuienAtaco = enemigos.filter({ enemigo => enemigo.estoyVivo()})
-		
-		const habilidadDeAtaque = habilidades.anyOne()	
-		
-		if (aQuienAtaco.size() == 1 && aQuienAtaco.head().vida() - aQuienAtaco.head().cuantoDanioMeHacen(habilidadDeAtaque) <= 0){
-			game.clear()
-			game.addVisualCharacter(perdiste)
-		}
-		
-		aQuienAtaco.head().recibirAtaque(habilidadDeAtaque)
-		
-		self.image(nombre + "Ataca.png")
-		
+	method atacar(habilidadDeAtaque) {	
+		turno.jugadorActual().recibirAtaque(habilidadDeAtaque)		
+		self.image(nombre + "Ataca.png")		
 		game.schedule(1000, {self.image(nombre + ".png")})
+			
 	}
 	
 	method seMuere() {

@@ -28,7 +28,8 @@ class Profesion {
 
 	method seMuere() {
 		self.image(nombre + "Muerto.png")
-		game.schedule(3000, {self.image("invisible.png")})
+		game.schedule(2000, {self.image("invisible.png")})
+	
 	}
 	
 	method estoyVivo() = vida > 0
