@@ -26,6 +26,9 @@ El objetivo del juego es que los tres poderosos héroes, el Doctor, el Caballero
 - Para pegar: tecla G
 - Para curar: tecla H
 
+## Documento teórico y diagrama de clases
+
+https://docs.google.com/document/d/1_CM8MyWX022y0E7vD8eAn83HxJyYBf7TI2wbHQs3AlE/edit?usp=sharing
 
 ## Otros
 
