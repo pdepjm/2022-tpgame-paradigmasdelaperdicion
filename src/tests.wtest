@@ -1,92 +1,80 @@
 import wollok.game.*
-import teclado.*
+import estadosEventosDirecciones.*
 import heroes.*
-import movimiento.*
-import enemigos.*
+import barrasDeVida.*
+import bichos.*
 import turnos.*
+import topeGanastePerdisteIntro.*
 
-//TESTS DE MOVIMIENTO Y POSICION
-test "si el lider esta en la posicion (20, 3) y se mueve una vez para la derecha, el lider queda en la posicion (21, 3)" {
-	lider.mover(derecha, 1)
-	assert.equals(game.at(21, 3), lider.position())
-}
 
-test "si el lider esta en la posicion (20, 3) y se mueve una vez para la izquierda, el lider queda en la posicion (19, 3)" {
-	lider.mover(izquierda, 1)
-	assert.equals(game.at(19, 3), lider.position())
-}
+const ataqueMalo = 20
 
-test "si el seguidor 1 esta en la posicion (14, 3) y se mueve una vez para la derecha, el lider queda en la posicion (15, 3)" {
-	lider.mover(derecha, 1)
-	assert.equals(game.at(15, 3), seguidor1.position())
-}
-
-//hay que hacer los nuevos los tests de la cantidad de danio\
+//ATAQUES
 
 test "Ataque del caballero al ectoplasma"{
 	
-	const caballero2 = new Caballero()
+	const caballero2 = new Profesion(nombre = "caballero", fuerza = 1, defensa = 3, curacion = 15)
 		
 	turno.enemigo(ectoplasma)
 	
 	assert.equals(1000, ectoplasma.vida())	
 	
-	caballero2.atacar(cascotaso)
+	caballero2.atacar()
 	
 	assert.equals(985, ectoplasma.vida())	
 }
 test "Recibir ataque caballero ataque1malo"{
 	
-	const caballero2 = new Caballero()
+	const caballero2 = new Profesion(nombre = "caballero", fuerza = 1, defensa = 3, curacion = 15)
 		
 	assert.equals(100, caballero2.vida())	
 	
-	caballero2.recibirAtaque(ataque1malo)
+	caballero2.recibirAtaque(ataqueMalo)
 	
 	assert.equals(93.33333, caballero2.vida())	
 }
 
 test "Ataque del doctor al ectoplasma"{
 	
-	const doctor2 = new Doctor()
+	const doctor2 = new Profesion(nombre = "doctor", fuerza = 2, defensa = 1, curacion = 20)
 		
 	turno.enemigo(ectoplasma)
 	
 	assert.equals(1000, ectoplasma.vida())	
 	
-	doctor2.atacar(cascotaso)
+	doctor2.atacar()
 	
 	assert.equals(970, ectoplasma.vida())	
 }
 test "Recibir ataque doctor ataque1malo"{
 	
-	const doctor2 = new Doctor()
+	const doctor2 = new Profesion(nombre = "doctor", fuerza = 2, defensa = 1, curacion = 20)
 		
 	assert.equals(100, doctor2.vida())	
 	
-	doctor2.recibirAtaque(ataque1malo)
+	doctor2.recibirAtaque(ataqueMalo)
 	
 	assert.equals(80, doctor2.vida())	
 }
 test "Ataque del leproso al ectoplasma"{
 	
-	const leproso2 = new Leproso()
+	const leproso2 = new Profesion(nombre = "leproso", fuerza = 4, defensa = 1, curacion = 10)
 		
 	turno.enemigo(ectoplasma)
 	
 	assert.equals(1000, ectoplasma.vida())	
 	
-	leproso2.atacar(cascotaso)
+	leproso2.atacar()
 	
 	assert.equals(940, ectoplasma.vida())	
 }
 test "Recibir ataque leproso glotoneria"{
 	
-	const leproso2 = new Leproso()
+	const leproso2 = new Profesion(nombre = "leproso", fuerza = 4, defensa = 1, curacion = 10)
 		
 	assert.equals(100, leproso2.vida())	
 	
-	leproso2.recibirAtaque(ataque1malo)
+	leproso2.recibirAtaque(ataqueMalo)
 	
 	assert.equals(80, leproso2.vida())	
 }

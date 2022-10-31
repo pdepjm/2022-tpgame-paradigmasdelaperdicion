@@ -1,62 +1,81 @@
 
 import wollok.game.*
 import heroes.*
-import movimiento.*
-import teclado.*
-import enemigos.*
-import niveles.*
+import estadosEventosDirecciones.*
+import barrasDeVida.*
 
 object turno {
-    var heroes = []
-    var property enemigo = ectoplasma
+	const heroes = [lider, seguidor1, seguidor2]
+    var iteradorHeroes = []
+    var property enemigo
+    var property nivel
     
     method jugadorActual() = self.aCualesAtacaElBicho().head()
     
-    method aCualesAtacaElBicho() = [lider, seguidor1, seguidor2].filter({heroe => heroe.estoyVivo()})
+    method jugadorQueLeTocaAtacar() = iteradorHeroes.head()
+    
+    method aCualesAtacaElBicho() = heroes.filter({unHeroe => unHeroe.estoyVivo()})
 	
-    method heroes(_heroes) {
-        heroes.addAll(_heroes)
+    method iteradorHeroesAgregarlos() {
+        iteradorHeroes.addAll(self.aCualesAtacaElBicho())
+        game.addVisual(flecha)
     }
     
     method iniciar() {
-        self.heroes(self.aCualesAtacaElBicho())
-        teclado.estado(enCombate) 
+    	lider.mover(izquierda, 6)
+        self.iteradorHeroesAgregarlos()
+        configuradorDeEventosYEstados.estado(enCombate) 
     }
 
-    method atacarCon(habilidad) {
-        heroes.head().atacar(habilidad)
-        heroes.remove(heroes.head())
-        if (heroes.isEmpty()) 
-            self.atacaElBicho()
+method atacaUnHeroe() {
+    	const danioDeAtaque = self.jugadorQueLeTocaAtacar().danioDeAtaqueHeroe()
+    	if(self.elBichoMoririacon(danioDeAtaque) && nivel.esElUltimo()) {
+    		self.jugadorQueLeTocaAtacar().atacar()
+    		 game.schedule(3000, {nivel.ganaste()})
+    	}
+    	if(self.elBichoMoririacon(danioDeAtaque)) {
+    		self.jugadorQueLeTocaAtacar().atacar()
+    		self.finDelTurno()
+    	}
+    	else {
+    		self.jugadorQueLeTocaAtacar().atacar()
+        	self.iterarHeroes()
+    	}
     }
-    
 
-    method curar(){ 
-        heroes.head().curar()
-        heroes.remove(heroes.head())
-        if (heroes.isEmpty()) 
-            self.atacaElBicho()
+    method curaUnHeroe() { 
+        iteradorHeroes.head().curar()
+        self.iterarHeroes()
     }
     
+    method iterarHeroes() {
+    	iteradorHeroes.remove(iteradorHeroes.head())
+        if (iteradorHeroes.isEmpty()) {        	
+			game.removeVisual(flecha)
+        	self.atacaElBicho()
+        }
+            
+    }    
 
     method atacaElBicho() {
-    	const habilidadDeAtaque = enemigo.elegirAtaque()
-    	if(self.moririanCon(habilidadDeAtaque)){
-    		game.clear()
-			game.addVisualCharacter(perdiste)
+    	const danioDeAtaque = enemigo.elegirDanioDeAtaque()
+    	if(self.elUltimoHeroeMoririaCon(danioDeAtaque)) {
+    		game.schedule(3000, {nivel.perdiste()})
     	}
-        enemigo.atacar(habilidadDeAtaque)        
-        self.iniciar()
+        enemigo.atacar(danioDeAtaque)        
+        self.iteradorHeroesAgregarlos()
     }
     
-	method finDelCombate(){
-		//game.schedule(3000 , {teclado.estado(enMovimiento)})
-		teclado.estado(enMovimiento)
-		heroes.clear()
+method finDelTurno() {	
+		game.removeVisual(flecha)	
+		iteradorHeroes.clear()		
+		configuradorDeEventosYEstados.estado(enMovimiento)
 	}
 	
-	method moririanCon(habilidadDeAtaque) = 
-		self.aCualesAtacaElBicho().size() == 1 && 
-		self.jugadorActual().vida() - self.jugadorActual().cuantoDanioMeHacen(habilidadDeAtaque) <= 0
+method elBichoMoririacon(danioDeAtaque) = 
+		enemigo.vida() - enemigo.cuantoDanioMeHacen(danioDeAtaque, self.jugadorQueLeTocaAtacar().fuerza()) <= 0
 	
+	method elUltimoHeroeMoririaCon(danioDeAtaque) = 
+		self.aCualesAtacaElBicho().size() == 1 && 
+		self.jugadorActual().vida() - self.jugadorActual().cuantoDanioMeHacen(danioDeAtaque) <= 0	
 }

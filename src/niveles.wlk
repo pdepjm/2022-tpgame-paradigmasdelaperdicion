@@ -1,83 +1,70 @@
 import wollok.game.*
-import movimiento.*
-import teclado.*
-import enemigos.*
+import barrasDeVida.*
+import estadosEventosDirecciones.*
+import bichos.*
 import heroes.*
 import turnos.*
+import topeGanastePerdisteIntro.*
 
-
-object nivelIntro {
+object nivelIntro {	
 	
-	const comienzo = new Visual (image = "intro2a.jpg", position = game.at(0,0))
-	
-	method inicio(){
+	method inicio() {
 		game.title("Perdidigma")
 		game.boardGround("fondito.png")
-		game.addVisual(comienzo)
+		game.addVisual(imagenIntro)
 		keyboard.space().onPressDo({self.configuracionInicial()})
 	}
 
-	method configuracionInicial(){
+	method configuracionInicial() {
+		
 		game.clear()
+		
+		game.addVisual(tope)
+		
 		game.addVisual(lider)
 		game.addVisual(seguidor1)
 		game.addVisual(seguidor2)
-		nivel1.configurarNivel()
-		game.addVisual(tope)
 		game.addVisual(barraLider)
 		game.addVisual(barraSeguidor1)
 		game.addVisual(barraSeguidor2)
-		teclado.configurarTeclas()
-		teclado.configurarColision()
+		game.addVisual(instrucciones)
 		
+		nivel1.configurarNivel()	
+		
+		configuradorDeEventosYEstados.configurarTeclas()
+		configuradorDeEventosYEstados.configurarColision()	
+		configuradorDeEventosYEstados.estado(enMovimiento)
+			
 	}
 }
 
-class NivelJuego{
-	
+class NivelJuego {	
 	const enemigo
 	const barraEnemigo
+	const property esElUltimo = false
 
-	method configurarNivel(){
+	method configurarNivel() {
+		lider.moverAlInicio()		
 		game.addVisual(enemigo)
 		game.addVisual(barraEnemigo)
+		turno.enemigo(enemigo)
+		turno.nivel(self)
+	}
+	
+	method perdiste() {
+		game.clear()
+		game.addVisualCharacter(yaPerdiste)
+	}
+	
+	method ganaste() {
+		game.clear()
+		game.addVisualCharacter(yaGanaste)
 	}
 }	
 
-class Visual {
-	var property image
-	var property position = game.at(50,50)
-	
-}
-
-object tope {
-	
-	const property position = game.at(50,3)
-	var property image = "invisible.png"
-
-	method colisionConHeroe(){
-		turno.enemigo(hongo)
-		lider.moverAlInicio()
-		nivel2.configurarNivel()
-		
-	}
-}
+/*------------------------------INSTANCIACIONES-----------------------------------------------*/
 
 const nivel1 = new NivelJuego(enemigo = ectoplasma, barraEnemigo = barraEctoplasma)
-const nivel2 = new NivelJuego(enemigo = hongo, barraEnemigo = barraHongo)
+const nivel2 = new NivelJuego(enemigo = hongo, barraEnemigo = barraHongo, esElUltimo = true)
 
 
-object ganaste {
-	
-	method position() = game.center().left(10)
-	
-	method image() = "victoria.png"
-}
-
-
-object perdiste {
-	
-	method position() = game.center().left(10)
-	
-	method image() = "derrota.png"
-}

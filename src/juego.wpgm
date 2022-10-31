@@ -1,8 +1,4 @@
 import wollok.game.*
-import movimiento.*
-import teclado.*
-import enemigos.*
-import heroes.*
 import niveles.*
 
 
