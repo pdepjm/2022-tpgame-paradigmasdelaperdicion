@@ -52,6 +52,7 @@ Se ve muy claro el concepto de delegación de responsabilidades cuando tanto el 
 
 ## Diagrama de clases
 
+![intro](./instrucciones/diagrama.png)
 
 ## Otros
 
