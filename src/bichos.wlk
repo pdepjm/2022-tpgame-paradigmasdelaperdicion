@@ -2,8 +2,7 @@ import wollok.game.*
 import turnos.*
 
 class Bicho {
-	//const daniosDeAtaquePosibles = [20, 30, 40, 50, 60, 75, 100, 200]
-	const daniosDeAtaquePosibles = [20, 30, 40, 50, 60, 75]
+	const daniosDeAtaquePosibles = [20, 30, 40, 50, 60, 75, 100, 200]
     const property position = game.at(30, 3)
 	var property vida
 	const property nombre
@@ -42,5 +41,3 @@ class Bicho {
 
 const ectoplasma = new Bicho(nombre = "ectoplasma", vida = 1000)
 const hongo = new Bicho (nombre="hongo", vida = 1500) 
-
-

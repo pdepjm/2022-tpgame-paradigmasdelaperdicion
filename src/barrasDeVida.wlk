@@ -47,23 +47,3 @@ object flecha {
 	method image() = "flecha.png" //flecha.png
 	method position() = turno.jugadorQueLeTocaAtacar().position().up(5)
 }
-
-/*-----------------------------------INSTRUCCIONES--------------------------------------------*/
-
-object instrucciones {
-	
-	method image() = configuradorDeEventosYEstados.estado().instrucciones()
-	
-	method position() = game.at(8, 25) // ahora vemos
-	
-	
-}
-
-
-
-
-
-
-
-
-

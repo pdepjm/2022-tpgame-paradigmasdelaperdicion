@@ -27,7 +27,6 @@ object nivelIntro {
 		game.addVisual(barraLider)
 		game.addVisual(barraSeguidor1)
 		game.addVisual(barraSeguidor2)
-		game.addVisual(instrucciones)
 		
 		nivel1.configurarNivel()	
 		
@@ -66,5 +65,3 @@ class NivelJuego {
 
 const nivel1 = new NivelJuego(enemigo = ectoplasma, barraEnemigo = barraEctoplasma)
 const nivel2 = new NivelJuego(enemigo = hongo, barraEnemigo = barraHongo, esElUltimo = true)
-
-

@@ -15,5 +15,3 @@ program juego {
     nivelIntro.inicio()
     game.start()
 }
-
-
