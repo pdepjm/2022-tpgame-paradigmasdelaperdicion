@@ -1,8 +1,17 @@
 import wollok.game.*
-import pepita.*
+import niveles.*
+
 
 program juego {
-	game.title("Juego Base")
-	game.addVisual(pepita)
-	game.start()
+	
+	const movimiento = game.sound("./musica/movimiento.mp3")
+    movimiento.shouldLoop(true)
+    game.schedule(500, { movimiento.play()})
+	
+	game.cellSize(100)
+	game.width(50)
+	game.height(30)
+	
+    nivelIntro.inicio()
+    game.start()
 }
