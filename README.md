@@ -56,7 +56,8 @@ Se ve muy claro el concepto de delegación de responsabilidades cuando tanto el 
 
 ## Otros
 
-- Paradigmas de Programación. Curso: Jueves a la mañana. UTN FRBA
+- Curso: Jueves a la mañana. UTN FRBA
+- Grupo: Paradigmas de Programación
 - Profesor: Alfredo Sanzo
-- Versión de wollok: 2021
-- Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado
+- Versión de Wollok: 2021
+- Una vez terminado, no tenemos problemas en que el repositorio sea público.
