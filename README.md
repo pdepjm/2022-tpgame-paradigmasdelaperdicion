@@ -11,8 +11,8 @@
 ## Capturas
 
 ![intro](./instrucciones/intro.png)
-![nivel1](./instrucciones/nivel1.png)
-![nivel2](./instrucciones/nivel2.png)
+![nivel1](./instrucciones/nivel-1.png)
+![nivel2](./instrucciones/nivel-2.png)
 ![ganaste](./instrucciones/ganaste.png)
 ![perdiste](./instrucciones/perdiste.png)
 
